@@ -209,3 +209,52 @@
 .text-shadow-glow {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
+.terminal-green {
+  color: #00ff00;
+}
+
+.terminal-white {
+  color: #ffffff;
+}
+
+.terminal-dim {
+  color: #a0a0a0;
+}
+
+@keyframes terminalBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: #00ff00;
+  margin-left: 2px;
+  animation: terminalBlink 1s infinite;
+}
+
+.boot-animation {
+  animation: fadeIn 0.1s ease-in;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: #00ff00;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95rem;
+  outline: none;
+  caret-color: #00ff00;
+}
+
+.terminal-input::selection {
+  background-color: #00ff00;
+  color: #000000;
+}

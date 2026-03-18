@@ -1,19 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import BootLoader from '@/components/BootLoader';
-import Terminal from '@/components/Terminal';
+import { useState } from 'react';
+import { LinuxBootLoader } from '@/components/LinuxBootLoader';
+import { InteractiveTerminal } from '@/components/InteractiveTerminal';
 
 export default function Home() {
-  const [isBooting, setIsBooting] = useState(true);
+  const [bootComplete, setBootComplete] = useState(false);
 
-  return (
-    <div className="w-full h-screen bg-background text-foreground font-mono">
-      {isBooting ? (
-        <BootLoader onComplete={() => setIsBooting(false)} />
-      ) : (
-        <Terminal />
-      )}
-    </div>
-  );
+  if (!bootComplete) {
+    return <LinuxBootLoader onBootComplete={() => setBootComplete(true)} />;
+  }
+
+  return <InteractiveTerminal />;
 }
