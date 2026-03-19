@@ -2,7 +2,7 @@ export const TERMINAL_DATA = {
   welcome: `
 ╔════════════════════════════════════════════════════════════════╗
 ║                                                                ║
-║     Welcome to GOWTHAM'S Professional Terminal Portfolio      ║
+║     Welcome to GOWTHAM'S Professional Terminal Portfolio       ║
 ║                 Information Systems Engineer                   ║
 ║                                                                ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -60,7 +60,7 @@ Type any command to execute it.
 ╔═══════════════════════════════════════════════════════════════╗
 ║  Information Systems Engineer @ Lumen Technologies            ║
 ║  Electronics & Communications Engineer                        ║
-║  Based in Bengaluru, Karnataka, India                        ║
+║  Based in Bengaluru, Karnataka, India                         ║
 ╚═══════════════════════════════════════════════════════════════╝
 
 █ PROFILE
@@ -137,19 +137,19 @@ $ ./skills.bin
 └──────────────────────────────────────────────────────────────┘
 
 ┌─ TOOLS & PLATFORMS ─────────────────────────────────────────┐
-│ Git & GitHub (Version Control, Collaboration)                │
-│ VS Code, IntelliJ IDEA (Development Environments)            │
-│ Linux/Ubuntu (System Administration)                         │
-│ Kali Linux (Security Tools, Penetration Testing Basics)      │
-│ Microsoft 365 (Teams, SharePoint, Excel)                     │
-└──────────────────────────────────────────────────────────────┘
+│ Git & GitHub (Version Control, Collaboration)               │
+│ VS Code, IntelliJ IDEA (Development Environments)           │
+│ Linux/Ubuntu (System Administration)                        │
+│ Kali Linux (Security Tools, Penetration Testing Basics)     │
+│ Microsoft 365 (Teams, SharePoint, Excel)                    │
+└─────────────────────────────────────────────────────────────┘
 
 ┌─ SOFT SKILLS ───────────────────────────────────────────────┐
-│ Problem Solving & Debugging                                  │
-│ Technical Documentation                                      │
-│ Team Collaboration & Communication                           │
-│ Project Management                                           │
-└──────────────────────────────────────────────────────────────┘
+│ Problem Solving & Debugging                                 │
+│ Technical Documentation                                     │
+│ Team Collaboration & Communication                          │
+│ Project Management                                          │
+└─────────────────────────────────────────────────────────────┘
 
 =======================================================================
 `,
@@ -167,11 +167,11 @@ $ ./skills.bin
    Electronic & Communications Engineering
    Sri Venkateswara University (SVUCE), Tirupati
    
-   ┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+   ┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    │  📖 Duration:    June 2021 - Apr 2025   │
    │  📊 CGPA:        8.72 / 10.0            │
    │  🏆 Status:      Final Year             │
-   └─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+   └─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
    
    ✓ Managed SVUCE Official Website (2024-2025)
    ✓ 2nd Prize - InWinHack 24-Hour Hackathon

@@ -44,31 +44,48 @@ export function InteractiveTerminal() {
 
   const streamText = async (text: string) => {
     setIsStreaming(true);
-    const lines_to_add: TerminalLine[] = [];
     const textLines = text.split('\n');
 
     for (const line of textLines) {
-      let currentLine = '';
-      for (let i = 0; i < line.length; i++) {
-        currentLine += line[i];
-        lines_to_add.push({
+      setLines((prev) => [
+        ...prev,
+        {
           type: 'output',
-          content: currentLine,
+          content: '',
           isStreaming: true,
+        },
+      ]);
+      for (let i = 0; i < line.length; i++) {
+        setLines((prev) => {
+          const lastLine = prev[prev.length - 1];
+          if (lastLine && lastLine.isStreaming) {
+            return [
+              ...prev.slice(0, -1),
+              {
+                ...lastLine,
+                content: lastLine.content + line[i],
+              },
+            ];
+          }
+          return prev;
         });
         await new Promise((resolve) => setTimeout(resolve, 5)); // Stream speed
       }
-      lines_to_add.push({
-        type: 'output',
-        content: line,
-        isStreaming: false,
+      setLines((prev) => {
+        const lastLine = prev[prev.length - 1];
+        if (lastLine && lastLine.isStreaming) {
+          return [
+            ...prev.slice(0, -1),
+            {
+              ...lastLine,
+              isStreaming: false,
+            },
+          ];
+        }
+        return prev;
       });
     }
 
-    setLines((prev) => [
-      ...prev.filter((l) => !l.isStreaming),
-      ...lines_to_add.filter((l) => !l.isStreaming),
-    ]);
     setIsStreaming(false);
   };
 
