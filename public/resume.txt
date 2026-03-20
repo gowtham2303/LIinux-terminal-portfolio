@@ -1,0 +1,136 @@
+THARIGOPULA GOWTHAM SREE
+Information Systems Engineer | Cloud & Full-Stack Developer
+Bengaluru, Karnataka, India | +91 9876543210
+Email: gowtham.tharigopula@gmail.com
+GitHub: github.com/tharigopula | LinkedIn: linkedin.com/in/gowtham-sree-tharigopula
+
+PROFESSIONAL SUMMARY
+Passionate Information Systems Engineer with expertise in cloud infrastructure, full-stack web development, and system automation. Demonstrated ability to design scalable applications and optimize system performance. Competitive exam topper (AIR 18 AMECET, 93.6 JEE percentile) with proven leadership and project delivery capabilities.
+
+PROFESSIONAL EXPERIENCE
+
+INFORMATION SYSTEMS ENGINEER
+Lumen Technologies, Bengaluru | August 2025 - Present
+• Design and manage cloud infrastructure on Microsoft Azure and AWS
+• Automate deployment pipelines using Terraform and CI/CD tools
+• Implement system monitoring, logging, and performance optimization
+• Collaborate with cross-functional teams on infrastructure scaling
+• Maintain 99.9% uptime for production services
+
+FULL-STACK DEVELOPER INTERN
+ZettaByte Plus, Remote | June 2024 - August 2024
+• Developed comprehensive banking application with TypeScript, React, and Node.js
+• Implemented JWT-based authentication and role-based access control
+• Designed PostgreSQL database schema with transaction handling
+• Optimized database queries achieving 40% performance improvement
+• Created responsive UI with Tailwind CSS and modern design patterns
+
+EDUCATION
+
+BACHELOR OF TECHNOLOGY
+Sri Venkateswara University (SVUCE), Tirupati
+Electronics & Communications Engineering | June 2021 - April 2025
+CGPA: 8.72/10.0 | Status: Final Year
+
+Key Achievements:
+✓ Managed SVUCE Official Website (2024-2025)
+✓ 2nd Prize, InWinHack 2024 - AI Chatbot Innovation
+✓ Technical Team Head, Sigmoid 2025 (National Technical Symposium)
+✓ NSS Volunteer - 6 months community service
+✓ Department Basketball Player
+✓ Active in technical student societies and clubs
+
+COMPETITIVE EXAMS
+• AMECET (Aircraft Maintenance Engineering): All India Rank 18 (Top 0.01%)
+• JEE MAIN (Engineering Entrance): 93.6 Percentile (Qualified)
+• Board Exams: 96.3% (First Class)
+
+TECHNICAL SKILLS
+
+PROGRAMMING LANGUAGES
+• Python (Advanced) - Automation, scripting, backend development
+• JavaScript/TypeScript (Advanced) - Frontend and backend development
+• SQL (Advanced) - Database design and optimization
+• Bash/Shell Scripting (Intermediate) - System administration
+• HTML/CSS (Advanced) - Web markup and styling
+
+FRONTEND DEVELOPMENT
+• React.js / Next.js - Component-based architecture, hooks, SSR
+• Tailwind CSS - Utility-first responsive design
+• UI/UX Implementation - Modern design patterns and accessibility
+
+BACKEND DEVELOPMENT
+• Node.js / Express.js - RESTful API development
+• Authentication - JWT, OAuth, secure session management
+• Database Design - PostgreSQL, MongoDB, query optimization
+• API Security - Input validation, CORS, rate limiting
+
+CLOUD & INFRASTRUCTURE
+• Microsoft Azure - VMs, App Services, Database
+• AWS - EC2, S3, Lambda, CloudFront
+• Docker & Containerization - Image creation, optimization
+• Kubernetes - Orchestration and deployment
+• Terraform - Infrastructure as Code, resource management
+
+DATABASES & TOOLS
+• PostgreSQL - Advanced querying, optimization, transactions
+• MongoDB - Document design, aggregation pipelines
+• Redis - Caching strategies and session storage
+• Git & GitHub - Version control, collaboration, pull requests
+• CI/CD - GitHub Actions, Jenkins, automated deployment
+
+FEATURED PROJECTS
+
+BANKING APPLICATION
+Tech Stack: TypeScript, React, Node.js, PostgreSQL, Tailwind CSS
+Duration: 4 months | Status: Completed
+
+Full-stack financial application with secure transaction processing. Implemented JWT-based authentication, encrypted sensitive data, transaction history tracking, and admin analytics dashboard. Achieved 40% database performance improvement through query optimization.
+
+SIGMOID 2025 WEBSITE
+Tech Stack: React, Node.js, Tailwind CSS
+Role: Technical Team Head | Status: Active
+
+National-level technical symposium website managing event registration, participant management, and live updates. Coordinated with design and content teams, ensured system reliability with 99.9% uptime, and handled 500+ concurrent users.
+
+SVUCE COLLEGE PORTAL
+Tech Stack: React, Node.js, MongoDB, Tailwind CSS
+Role: Lead Developer & Maintainer | Status: Ongoing
+
+College management system handling student enrollment, course registration, grade management, and announcements. Managing 500+ daily active users with 40% performance improvement, automated backup systems, and enhanced UI/UX.
+
+PYTHON SNAKE GAME
+Tech Stack: Python 3, Pygame, OOP
+Type: Educational Project | Status: Completed
+
+Classic snake game demonstrating game loop programming, collision detection, scoring system, difficulty levels, and sound integration. Showcases OOP design patterns and performance optimization.
+
+AWARDS & CERTIFICATIONS
+
+COMPETITIVE EXAM ACHIEVEMENTS
+✓ AMECET: All India Rank 18 - Top 0.01% among 180,000+ candidates
+✓ JEE MAIN: 93.6 Percentile - Among top performers nationwide
+✓ Board Exams: 96.3% - First Class distinction
+
+HACKATHON & COMPETITION WINS
+✓ 2nd Prize - InWinHack 2024
+  Project: AI Chatbot with Customization Features
+  Prize: Cash Award + Trophy
+
+TECHNICAL RECOGNITIONS
+✓ GitHub Pull Shark Badge - Active open source contributor
+✓ Website Manager - SVUCE Official Portal (2024-2025)
+✓ Technical Team Lead - Sigmoid 2025 National Symposium
+
+CERTIFICATIONS
+✓ Microsoft Azure Fundamentals (In Progress)
+✓ Terraform Associate (In Progress)
+✓ AWS Cloud Practitioner (Scheduled)
+
+ADDITIONAL INFORMATION
+
+Languages: English (Professional), Hindi (Conversational), Telugu (Native)
+Availability: Available for immediate discussion
+Employment Type: Open to Full-Time and Contract opportunities
+Timezone: IST (UTC+5:30)
+Remote Work: Available for remote positions
