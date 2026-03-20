@@ -305,8 +305,17 @@ export function InteractiveTerminal() {
     }
 
     return (
-      <div key={idx} className={className}>
-        {line.content}
+      <div
+        key={idx}
+        className={className}
+        dangerouslySetInnerHTML={
+          typeof line.content === 'string' && line.content.includes('<span')
+            ? { __html: line.content }
+            : undefined
+        }
+      >
+        {typeof line.content === 'string' && !line.content.includes('<span') ? line.content : undefined}
+        {typeof line.content !== 'string' ? line.content : undefined}
       </div>
     );
   };
@@ -315,16 +324,10 @@ export function InteractiveTerminal() {
     <div className="w-full h-screen bg-black flex flex-col overflow-hidden">
       {/* Terminal Header */}
       <div className="bg-gray-900 border-b border-gray-700 px-3 md:px-4 py-2 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center gap-2 overflow-hidden">
-          <div className="flex gap-1.5 flex-shrink-0">
-            <div className="w-3 h-3 rounded-full bg-red-500 cursor-pointer hover:bg-red-600" onClick={() => window.close()}></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer hover:bg-yellow-600" onClick={toggleFullscreen}></div>
-            <div className="w-3 h-3 rounded-full bg-green-500 cursor-pointer hover:bg-green-600" onClick={toggleFullscreen}></div>
-          </div>
-          <span className="text-gray-400 text-xs md:text-sm ml-2 truncate hidden sm:inline">
-            {SYSTEM_INFO.user}@{SYSTEM_INFO.hostname}: {SYSTEM_INFO.directory}
-          </span>
-        </div>
+        <span className="text-gray-400 text-xs md:text-sm truncate hidden sm:inline font-mono">
+          {SYSTEM_INFO.user}@{SYSTEM_INFO.hostname}: {SYSTEM_INFO.directory}
+        </span>
+        <div className="flex-1" />
         <div className="flex gap-2 md:gap-3 flex-shrink-0">
           <a
             href="https://github.com/gowtham2303"
@@ -344,13 +347,6 @@ export function InteractiveTerminal() {
           >
             <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
           </a>
-          <button
-            onClick={toggleFullscreen}
-            className="text-gray-400 hover:text-white transition-colors p-1 hidden md:block"
-            title="Toggle Fullscreen"
-          >
-            {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-          </button>
         </div>
       </div>
 

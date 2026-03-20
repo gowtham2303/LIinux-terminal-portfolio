@@ -239,22 +239,29 @@ export default function GUIPage() {
       {/* Main Content Area */}
       <div className="relative z-10 w-full flex-1 overflow-auto p-6">
         {/* App Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {apps.map((app) => (
             <button
               key={app.id}
               onClick={() => openWindow(app.id)}
-              className={`group relative bg-gradient-to-br ${app.color} p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer overflow-hidden h-40`}
+              className={`group relative bg-gradient-to-br ${app.color} rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer overflow-hidden aspect-square flex items-center justify-center`}
             >
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative flex flex-col items-center justify-center h-full gap-3">
-                <div className="text-white opacity-90 group-hover:opacity-100 transition-opacity">
+              {/* Glassmorphism overlay */}
+              <div className="absolute inset-0 backdrop-blur-sm opacity-0 group-hover:opacity-10 transition-opacity bg-white" />
+              <div className="absolute inset-0 border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+              
+              {/* Content */}
+              <div className="relative flex flex-col items-center justify-center gap-2 z-10">
+                <div className="text-white opacity-80 group-hover:opacity-100 transition-opacity transform group-hover:scale-110 duration-300">
                   {app.icon}
                 </div>
-                <span className="text-white font-semibold text-center text-sm sm:text-base">
+                <span className="text-white font-semibold text-center text-xs sm:text-sm leading-tight px-2">
                   {app.title}
                 </span>
               </div>
+              
+              {/* Hover effect */}
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
           ))}
         </div>

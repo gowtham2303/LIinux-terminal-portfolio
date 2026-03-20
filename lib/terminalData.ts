@@ -2,95 +2,77 @@ export const TERMINAL_DATA = {
   welcome: `Welcome to Gowtham Sree's Terminal Portfolio
 Type 'help' to see available commands or click the command buttons below.`,
 
-  about: `ABOUT ME
+  about: `<span class="text-red-500 font-bold text-lg">[ ABOUT ME ]</span>
 
-Information Systems Engineer at Lumen Technologies, Bengaluru.
+<span class="text-cyan-400">▸ Position:</span> Information Systems Engineer at <span class="text-green-400 font-semibold">Lumen Technologies</span>
+<span class="text-cyan-400">▸ Location:</span> Bengaluru, India
 
-I work where infrastructure meets product — cloud systems, automation 
-pipelines, and full-stack applications that actually ship.
+<span class="text-yellow-400 font-semibold">Professional Focus:</span>
+  Cloud Infrastructure • Automation Pipelines • Full-Stack Applications
 
-EDUCATION
-ECE graduate from Sri Venkateswara University with an 8.72 GPA.
-Started as an intern at Lumen and converted full-time.
+<span class="text-red-500 font-bold mt-4 block">[ EDUCATION ]</span>
+<span class="text-cyan-400">▸ Degree:</span> <span class="text-green-400">B.Tech Electronics & Communications</span>
+<span class="text-cyan-400">▸ University:</span> Sri Venkateswara University, Tirupati
+<span class="text-cyan-400">▸ GPA:</span> <span class="text-green-400 font-bold">8.72 / 10.0</span>
 
-EXPERIENCE
-Before Lumen, built production web apps at ZettaByte Plus and led 
-the technical team at Sigmoid 2025 — a national-level tech symposium.
+<span class="text-red-500 font-bold mt-4 block">[ ACHIEVEMENTS ]</span>
+<span class="text-green-400">✓</span> 2nd Prize at <span class="text-yellow-400">InWinHack 2024</span> (AI Chatbot)
+<span class="text-green-400">✓</span> AIR <span class="text-yellow-400">18</span> in <span class="text-yellow-400">AMECET</span> Entrance Exam
+<span class="text-green-400">✓</span> <span class="text-yellow-400">93.6 percentile</span> in <span class="text-yellow-400">JEE Main</span>
+<span class="text-green-400">✓</span> Technical Team Lead - Sigmoid 2025`,
 
-ACHIEVEMENTS
-• Won 2nd place at InWinHack building an AI chatbot
-• Scored AIR 18 in AMECET
-• 93.6 percentile in JEE Main
-• Played basketball for ECE department
-• NSS volunteer
-• Once studied at a Navodaya school in Rajasthan`,
+  skills: `<span class="text-red-500 font-bold text-lg">[ TECHNICAL SKILLS ]</span>
 
-  skills: `TECHNICAL SKILLS
+<span class="text-yellow-400 font-semibold">▸ CLOUD & INFRASTRUCTURE</span>
+  <span class="text-green-400">→</span> Microsoft Azure
+  <span class="text-green-400">→</span> Terraform (IaC)
+  <span class="text-green-400">→</span> Azure DevOps
 
-CLOUD & INFRASTRUCTURE
-• Microsoft Azure - Provisioning, monitoring, managing services
-• Terraform - Infrastructure as Code, cloud resource management
-• M365 - Microsoft 365 enterprise ecosystem
+<span class="text-yellow-400 font-semibold">▸ AUTOMATION & DEVOPS</span>
+  <span class="text-green-400">→</span> Power Automate
+  <span class="text-green-400">→</span> CI/CD Pipelines (GitHub Actions)
+  <span class="text-green-400">→</span> Docker & Kubernetes
 
-PROCESS AUTOMATION
-• Power Automate - Workflow automation at enterprise scale
-• Scripting - System automation and integration
-• CI/CD Pipelines - Deployment automation
+<span class="text-yellow-400 font-semibold">▸ FRONTEND TECHNOLOGIES</span>
+  <span class="text-green-400">→</span> React / TypeScript
+  <span class="text-green-400">→</span> Next.js 16+
+  <span class="text-green-400">→</span> Tailwind CSS
+  <span class="text-green-400">→</span> HTML5 / CSS3
 
-FRONTEND DEVELOPMENT
-• React / TypeScript - Modern component-driven development
-• Next.js - Server-side rendering & static generation
-• HTML5 / CSS3 - Semantic markup and responsive design
-• Tailwind CSS - Utility-first styling
+<span class="text-yellow-400 font-semibold">▸ BACKEND & DATABASES</span>
+  <span class="text-green-400">→</span> Node.js / Express.js
+  <span class="text-green-400">→</span> Python 3
+  <span class="text-green-400">→</span> PostgreSQL / MySQL
+  <span class="text-green-400">→</span> REST APIs & GraphQL
 
-BACKEND DEVELOPMENT
-• Node.js - JavaScript runtime for server applications
-• Express.js - Web framework for REST APIs
-• Python - Automation, scripting, AI/ML basics
+<span class="text-yellow-400 font-semibold">▸ TOOLS & PLATFORMS</span>
+  <span class="text-green-400">→</span> Git / GitHub / GitLab
+  <span class="text-green-400">→</span> Linux Administration
+  <span class="text-green-400">→</span> Postman / VS Code`,
 
-DATABASE & TOOLS
-• PostgreSQL / MySQL - Relational databases
-• Git & GitHub - Version control and collaboration
-• Docker - Containerization
-• Linux - System administration`,
+  education: `<span class="text-red-500 font-bold text-lg">[ EDUCATION ]</span>
 
-  education: `EDUCATION
+<span class="text-cyan-400 font-semibold">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="text-green-400 font-bold text-base">B.Tech - Electronics & Communications Engineering</span>
+<span class="text-cyan-400">▸ Institute:</span> Sri Venkateswara University, Tirupati
+<span class="text-cyan-400">▸ Duration:</span> June 2021 - April 2025
+<span class="text-cyan-400">▸ GPA:</span> <span class="text-yellow-400 font-bold">8.72 / 10.0</span>
 
-B.Tech — Electronics & Communications Engineering
-Sri Venkateswara University, Tirupati
-June 2021 — April 2025
+<span class="text-yellow-400">Highlights:</span>
+  <span class="text-green-400">✓</span> Led Technical Team at Sigmoid 2025
+  <span class="text-green-400">✓</span> Built AI Chatbot (2nd Prize InWinHack)
+  <span class="text-green-400">✓</span> Open Source Contributions
 
-GPA: 8.72 / 10.0
+<span class="text-cyan-400 font-semibold">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="text-green-400 font-bold text-base">Higher Secondary (12th Grade) - MPC</span>
+<span class="text-cyan-400">▸ Institute:</span> Sri Viswasanthi Educational Institutions
+<span class="text-cyan-400">▸ Duration:</span> June 2019 - May 2021
+<span class="text-cyan-400">▸ Score:</span> <span class="text-yellow-400 font-bold">96.3%</span>
 
-Highlights:
-• Led Technical Team at Sigmoid 2025 (National Tech Symposium)
-• Built AI chatbots and automation systems
-• Active contributor to open-source projects
-
-────────────────────────────────────────────
-
-Higher Secondary — MPC (CBSE)
-Sri Viswasanthi Educational Institutions
-June 2019 — May 2021
-
-Score: 96.3%
-
-Achievements:
-• AIR 18 in AMECET (All India Rank)
-• 93.6 percentile in JEE Main
-• Top performer in Mathematics and Physics
-
-────────────────────────────────────────────
-
-Secondary School — CBSE
-Jawahar Navodaya Vidyalaya, Rajasthan
-July 2014 — April 2019
-
-Score: 93.6%
-
-Activities:
-• Migration year experience across different states
-• Active in sports and cultural activities`,
+<span class="text-yellow-400">Achievements:</span>
+  <span class="text-green-400">✓</span> AIR 18 in AMECET
+  <span class="text-green-400">✓</span> 93.6 percentile in JEE Main
+  <span class="text-green-400">✓</span> Top Performer in Mathematics`,
 
   experience: `WORK EXPERIENCE
 

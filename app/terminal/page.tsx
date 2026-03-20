@@ -34,18 +34,7 @@ export default function TerminalPage() {
           <TerminalWrapper />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-green-400 font-mono text-sm mb-4">Booting system...</p>
-              <div className="flex gap-2 justify-center">
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className="w-2 h-2 bg-green-400 rounded-full animate-bounce"
-                    style={{ animationDelay: `${i * 0.2}s` }}
-                  />
-                ))}
-              </div>
-            </div>
+            <p className="text-green-400 font-mono text-sm">Initializing terminal...</p>
           </div>
         )}
       </div>
