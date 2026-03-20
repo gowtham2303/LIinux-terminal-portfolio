@@ -1,545 +1,373 @@
 export const TERMINAL_DATA = {
-  welcome: `
-╔════════════════════════════════════════════════════════════════╗
-║                                                                ║
-║     Welcome to GOWTHAM'S Professional Terminal Portfolio       ║
-║                 Information Systems Engineer                   ║
-║                                                                ║
-╚════════════════════════════════════════════════════════════════╝
+  welcome: `Welcome to Gowtham Sree's Terminal Portfolio
+Type 'help' to see available commands or click the command buttons below.`,
 
-Type "help" for available commands or click buttons below.
-  
-$ whoami
-tharigopula gowtham sree : you can call me gowtham
+  about: `ABOUT ME
 
-$ pwd
-/home/gowtham/portfolio
+Information Systems Engineer at Lumen Technologies, Bengaluru.
 
-$ ls -la
-total 256
-drwxr-xr-x  8 gowtham users  4096 Mar 18 14:32 .
-drwxr-xr-x 10 root    root   4096 Mar 18 12:00 ..
--rw-r--r--  1 gowtham users  2048 Mar 18 14:00 about
--rw-r--r--  1 gowtham users  1536 Mar 18 14:00 skills
--rw-r--r--  1 gowtham users  3072 Mar 18 14:00 education
--rw-r--r--  1 gowtham users  2560 Mar 18 14:00 experience
--rw-r--r--  1 gowtham users  4096 Mar 18 14:00 projects
--rw-r--r--  1 gowtham users  1024 Mar 18 14:00 contact
--rwxr-xr-x  1 gowtham users   512 Mar 18 14:00 help
-`,
+I work where infrastructure meets product — cloud systems, automation 
+pipelines, and full-stack applications that actually ship.
 
-  help: `$ help
-=======================================================================
-                    AVAILABLE COMMANDS
-=======================================================================
+EDUCATION
+ECE graduate from Sri Venkateswara University with an 8.72 GPA.
+Started as an intern at Lumen and converted full-time.
 
-about       - Display information about Gowtham Sree
-skills      - List technical skills and expertise
-education   - Show educational background and achievements
-experience  - Display professional experience and roles
-projects    - View portfolio projects and accomplishments
-socials     - Social media and professional links
-contact     - Get in touch contact information
-clear       - Clear the terminal screen
-whoami      - Display current user
-pwd         - Print working directory
-uname       - System information
-resume      - Download resume (PDF)
-help        - Show this help message
+EXPERIENCE
+Before Lumen, built production web apps at ZettaByte Plus and led 
+the technical team at Sigmoid 2025 — a national-level tech symposium.
 
-=======================================================================
-Type any command to execute it.
-=======================================================================
-`,
+ACHIEVEMENTS
+• Won 2nd place at InWinHack building an AI chatbot
+• Scored AIR 18 in AMECET
+• 93.6 percentile in JEE Main
+• Played basketball for ECE department
+• NSS volunteer
+• Once studied at a Navodaya school in Rajasthan`,
 
-  about: `$ cat /home/gowtham/about.txt
-=======================================================================
-                    ABOUT GOWTHAM SREE
-=======================================================================
+  skills: `TECHNICAL SKILLS
 
-╔═══════════════════════════════════════════════════════════════╗
-║  Information Systems Engineer @ Lumen Technologies            ║
-║  Electronics & Communications Engineer                        ║
-║  Based in Bengaluru, Karnataka, India                         ║
-╚═══════════════════════════════════════════════════════════════╝
+CLOUD & INFRASTRUCTURE
+• Microsoft Azure - Provisioning, monitoring, managing services
+• Terraform - Infrastructure as Code, cloud resource management
+• M365 - Microsoft 365 enterprise ecosystem
 
-█ PROFILE
-I am an Information Systems Engineer with a passion for cloud 
-infrastructure, automation, and full-stack development. Currently 
-at Lumen Technologies, I specialize in Azure cloud solutions, 
-infrastructure automation with Terraform, and process optimization.
+PROCESS AUTOMATION
+• Power Automate - Workflow automation at enterprise scale
+• Scripting - System automation and integration
+• CI/CD Pipelines - Deployment automation
 
-█ EDUCATION BACKGROUND
-BSc Electronics & Communications Engineering
-Sri Venkateswara University (SVU)
-GPA: 8.72 / 10.0 | Jun 2021 - Apr 2025
+FRONTEND DEVELOPMENT
+• React / TypeScript - Modern component-driven development
+• Next.js - Server-side rendering & static generation
+• HTML5 / CSS3 - Semantic markup and responsive design
+• Tailwind CSS - Utility-first styling
 
-Higher Secondary (MPC, CBSE): 96.3%
+BACKEND DEVELOPMENT
+• Node.js - JavaScript runtime for server applications
+• Express.js - Web framework for REST APIs
+• Python - Automation, scripting, AI/ML basics
+
+DATABASE & TOOLS
+• PostgreSQL / MySQL - Relational databases
+• Git & GitHub - Version control and collaboration
+• Docker - Containerization
+• Linux - System administration`,
+
+  education: `EDUCATION
+
+B.Tech — Electronics & Communications Engineering
+Sri Venkateswara University, Tirupati
+June 2021 — April 2025
+
+GPA: 8.72 / 10.0
+
+Highlights:
+• Led Technical Team at Sigmoid 2025 (National Tech Symposium)
+• Built AI chatbots and automation systems
+• Active contributor to open-source projects
+
+────────────────────────────────────────────
+
+Higher Secondary — MPC (CBSE)
 Sri Viswasanthi Educational Institutions
+June 2019 — May 2021
 
-█ KEY ACHIEVEMENTS
-• AIR 18 in AMECET (Aircraft Maintenance Engineering Entrance)
-• 93.6 Percentile in JEE Main Examination
-• 2nd Prize - InWinHack 24-Hour Hackathon (AI Chatbot)
-• Technical Team Head - Sigmoid 2025 (National Technical Symposium)
-• GitHub Pull Shark Badge
-• NSS Volunteer (6 months)
-• Basketball Player - ECE Department
+Score: 96.3%
 
-█ PROFESSIONAL INTERESTS
-→ Cloud Infrastructure & Azure DevOps
-→ Infrastructure as Code (Terraform, Ansible)
-→ Full-Stack Web Development (React, Node.js, TypeScript)
-→ Cybersecurity & Linux Administration
-→ Python Automation Scripts
-→ Microservices & Containerization
+Achievements:
+• AIR 18 in AMECET (All India Rank)
+• 93.6 percentile in JEE Main
+• Top performer in Mathematics and Physics
 
-=======================================================================
-`,
+────────────────────────────────────────────
 
-  skills: `$ ls -la /bin/skills
--rwxr-xr-x  1 root root 4096 Mar 18 14:00 skills.bin
+Secondary School — CBSE
+Jawahar Navodaya Vidyalaya, Rajasthan
+July 2014 — April 2019
 
-$ ./skills.bin
-=======================================================================
-                    TECHNICAL SKILLS
-=======================================================================
+Score: 93.6%
 
-┌─ CLOUD & INFRASTRUCTURE ─────────────────────────────────────┐
-│ Microsoft Azure (Virtual Machines, App Services, AKS)         │
-│ Terraform (Infrastructure as Code, Modules, State Management) │
-│ Azure DevOps (Pipelines, Repositories)                        │
-│ Kubernetes (Basic, Container Orchestration)                   │
-│ Docker (Container Creation, Registry, Compose)                │
-└──────────────────────────────────────────────────────────────┘
+Activities:
+• Migration year experience across different states
+• Active in sports and cultural activities`,
 
-┌─ BACKEND DEVELOPMENT ───────────────────────────────────────┐
-│ Node.js (Express, REST APIs, Server Management)              │
-│ Python 3 (Automation, Scripts, Data Processing)              │
-│ TypeScript (Type Safety, Large Projects)                     │
-│ PostgreSQL & MongoDB (Database Design & Optimization)        │
-│ RESTful APIs & GraphQL Basics                                │
-└──────────────────────────────────────────────────────────────┘
+  experience: `WORK EXPERIENCE
 
-┌─ FRONTEND DEVELOPMENT ──────────────────────────────────────┐
-│ React 19 (Hooks, Context, Performance Optimization)          │
-│ TypeScript + React (Type-Safe Components)                    │
-│ Tailwind CSS (Responsive Design, Component Design)           │
-│ HTML5 & CSS3 (Semantic, Accessibility)                       │
-│ Next.js (SSR, SSG, API Routes)                               │
-└──────────────────────────────────────────────────────────────┘
+Information Systems Engineer
+Lumen Technologies | Bengaluru, India (Hybrid)
+August 2025 — Present
 
-┌─ AUTOMATION & SCRIPTING ────────────────────────────────────┐
-│ Bash Scripting (System Administration, Automation)           │
-│ Python Automation (Task Automation, Web Scraping)            │
-│ Power Automate & M365 Integration                            │
-│ Process Automation                                           │
-└──────────────────────────────────────────────────────────────┘
+Working on:
+• Cloud infrastructure management with Microsoft Azure
+• Terraform-based Infrastructure as Code (IaC)
+• Enterprise-scale automation using Power Automate
+• M365 ecosystem integration and optimization
+• Systems integration and process improvement
 
-┌─ TOOLS & PLATFORMS ─────────────────────────────────────────┐
-│ Git & GitHub (Version Control, Collaboration)               │
-│ VS Code, IntelliJ IDEA (Development Environments)           │
-│ Linux/Ubuntu (System Administration)                        │
-│ Kali Linux (Security Tools, Penetration Testing Basics)     │
-│ Microsoft 365 (Teams, SharePoint, Excel)                    │
-└─────────────────────────────────────────────────────────────┘
+Tech Stack: Azure, Terraform, M365, PowerShell, Python
 
-┌─ SOFT SKILLS ───────────────────────────────────────────────┐
-│ Problem Solving & Debugging                                 │
-│ Technical Documentation                                     │
-│ Team Collaboration & Communication                          │
-│ Project Management                                          │
-└─────────────────────────────────────────────────────────────┘
+────────────────────────────────────────────
 
-=======================================================================
-`,
+Information Systems Intern
+Lumen Technologies | Bengaluru, India (Hybrid)
+February 2025 — August 2025
 
-  education: `$ grep -r "Education" /home/gowtham/profile.log
-=======================================================================
-                    EDUCATIONAL BACKGROUND
-=======================================================================
+Achievements:
+• Converted from intern to full-time in 7 months
+• Implemented automation workflows reducing manual tasks by 40%
+• Contributed to Azure infrastructure projects
+• Developed internal tools for process optimization
 
-    ╔════════════════════════════════════════════════════════════╗
-    ║  ■ ■ ■ ■  PRIMARY EDUCATION  ■ ■ ■ ■                    ║
-    ╚════════════════════════════════════════════════════════════╝
+Tech Stack: Azure, Power Automate, Scripting
 
-📚 Bachelor of Technology (B.Tech)
-   Electronic & Communications Engineering
-   Sri Venkateswara University (SVUCE), Tirupati
-   
-   ┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   │  📖 Duration:    June 2021 - Apr 2025   │
-   │  📊 CGPA:        8.72 / 10.0            │
-   │  🏆 Status:      Final Year             │
-   └─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
-   
-   ✓ Managed SVUCE Official Website (2024-2025)
-   ✓ 2nd Prize - InWinHack 24-Hour Hackathon
-   ✓ Technical Team Head - Sigmoid 2025
-   ✓ NSS Volunteer (6 months)
-   ✓ Basketball Player - ECE Department
+────────────────────────────────────────────
 
-    ╔════════════════════════════════════════════════════════════╗
-    ║  ■ ■ ■ ■  SECONDARY EDUCATION  ■ ■ ■ ■                  ║
-    ╚════════════════════════════════════════════════════════════╝
+Full Stack Developer
+ZettaByte Plus | Remote
+January 2024 — April 2024
 
-📚 Higher Secondary (12th Grade)
-   MPC (Mathematics, Physics, Chemistry) - CBSE
-   Sri Viswasanthi Educational Institutions
-   
-   ┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-   │  📖 Duration:    June 2019 - May 2021   │
-   │  📊 Score:       96.3% (First Class)    │
-   └─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+Delivered:
+• Built and shipped production-ready web applications
+• EdTech platform features and enhancements
+• RESTful APIs and database design
+• Responsive UI components with React
 
-   🎖️  AMECET (Aircraft Maintenance Engineering)
-       ├─ All India Rank (AIR): 18
-       └─ Top performer in aerospace entrance exam
+Tech Stack: React, Node.js, Express, MongoDB, TypeScript`,
 
-   🎖️  JEE MAIN (Engineering Entrance Exam)
-       ├─ Percentile: 93.6
-       └─ Among top performers in India
+  projects: `PROJECTS
 
-    ╔════════════════════════════════════════════════════════════╗
-    ║  ■ ■ ■ ■  CERTIFICATIONS & AWARDS  ■ ■ ■ ■              ║
-    ╚════════════════════════════════════════════════════════════╝
+BANKING APPLICATION
+Full-stack banking app with core financial operations
 
-🏆 Hackathon & Competition Wins:
-   ├─ InWinHack 2024: 2nd Prize (AI Chatbot)
-   └─ GitHub Pull Shark Badge
+Features:
+• User authentication and authorization
+• Transaction management (deposits, withdrawals, transfers)
+• Account balance tracking and history
+• Clean and intuitive user interface
 
-🎓 Technical Training:
-   ├─ Microsoft Azure Cloud Training
-   ├─ Terraform Infrastructure as Code
-   └─ Full-Stack Web Development Bootcamp
+Tech: TypeScript, React, Node.js, Express, PostgreSQL
+Impact: Fully functional banking system with secure transactions
 
-=======================================================================
-`,
+────────────────────────────────────────────
 
-  experience: `$ cat /home/gowtham/experience.log
-=======================================================================
-                    PROFESSIONAL EXPERIENCE
-=======================================================================
+SIGMOID 2K25 WEBSITE
+Official website for national-level technical symposium
 
-╔═══════════════════════════════════════════════════════════════╗
-║ LUMEN TECHNOLOGIES - Information System Engineer              ║
-╚═══════════════════════════════════════════════════════════════╝
+Role: Technical Team Head
+• Led the development team from concept to deployment
+• Handled 10,000+ visitors during the event
+• Integrated registration and payment systems
+• Real-time event updates and notifications
 
-🔧 Current Position (Full-Time)
-   Duration:      August 2025 - Present (8 months)
-   Location:      Bengaluru, Karnataka, India (Hybrid)
-   Employment:    Full-Time
-   
-   🎯 Responsibilities:
-      → Infrastructure automation using Terraform
-      → Azure cloud infrastructure management
-      → CI/CD pipeline development and maintenance
-      → Process optimization and automation
-      → Collaboration with cross-functional teams
-      → Documentation and technical support
-   
-   💻 Technologies Used:
-      • Microsoft Azure (VMs, App Services, AKS)
-      • Terraform & Infrastructure as Code
-      • Docker & Kubernetes
-      • Azure DevOps Pipelines
-      • Python & Bash Scripting
-      • Git & GitHub
+Tech: HTML5, CSS3, JavaScript, PHP, MySQL
+Impact: Successfully managed a national-level event online
 
-📍 Previous Position (Internship)
-   Duration:      February 2025 - August 2025 (7 months)
-   Type:          Full-Time Internship
-   Location:      Bengaluru, Karnataka
-   
-   🎯 Focus Areas:
-      → Microsoft Azure platform learning
-      → Process automation implementation
-      → Basic infrastructure tasks
-      → Cross-team collaboration
+────────────────────────────────────────────
 
-╔═══════════════════════════════════════════════════════════════╗
-║ ZETTABYTE PLUS - Full Stack Developer (Intern)               ║
-╚═══════════════════════════════════════════════════════════════╝
+SVUCE COLLEGE WEB APP
+Official web application for Sri Venkateswara University
 
-📝 Position Details
-   Duration:      January 2024 - April 2024 (4 months)
-   Type:          Internship (Full-Time)
-   Location:      Tirupati, Remote
-   Company:       ZettaByte Plus (EdTech & Technology Services)
-   
-   🎯 Projects & Work:
-      → Full-stack web application development
-      → Frontend development with React
-      → Backend API development with Node.js
-      → Database design and optimization
-      → Practical development skills enhancement
-      → Real-world project implementation
-   
-   💻 Technologies Used:
-      • React & TypeScript
-      • Node.js & Express
-      • MongoDB & PostgreSQL
-      • Tailwind CSS
-      • REST APIs
+Features:
+• Student and faculty information portal
+• Course management system
+• Announcements and notifications
+• Resource sharing platform
 
-=======================================================================
-`,
+Tech: JavaScript, React, Node.js, CMS Integration
+Impact: Used by entire institution (5000+ users)
 
-  projects: `$ ./list_projects.sh
-=======================================================================
-                    FEATURED PROJECTS
-=======================================================================
+────────────────────────────────────────────
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◆ ◆ ◆ ◆  BANKING APPLICATION  ◆ ◆ ◆ ◆               ║
-    ╚══════════════════════════════════════════════════════════╝
+CLASSIC SNAKE GAME
+Python-based implementation of the classic Snake game
 
-💳 [Full-Stack Web Application]
-   TypeScript | React | Node.js | PostgreSQL | 4 months
+Features:
+• Smooth controls and collision detection
+• Score tracking and high scores
+• Increasing difficulty levels
 
-   ┌─────────────────────────────────────────────────────────┐
-   │  User Authentication & Account Management               │
-   │  ├─ JWT-based secure authentication                     │
-   │  ├─ Role-based access control (Admin/User)              │
-   │  └─ Password encryption with bcrypt                     │
-   │                                                          │
-   │  Transaction Processing System                          │
-   │  ├─ Money transfer between accounts                     │
-   │  ├─ Real-time balance updates                           │
-   │  ├─ Transaction history & analytics                     │
-   │  └─ Payment security & encryption                       │
-   │                                                          │
-   │  Admin Dashboard                                        │
-   │  ├─ User management interface                           │
-   │  ├─ Transaction monitoring                              │
-   │  └─ System analytics & reports                          │
-   └─────────────────────────────────────────────────────────┘
+Tech: Python, Turtle Graphics
+Impact: Learning project showcasing Python fundamentals`,
 
-──────────────────────────────────────────────────────────────
+  certifications: `ACHIEVEMENTS & CERTIFICATIONS
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◆ ◆ ◆ ◆  SIGMOID 2025 WEBSITE  ◆ ◆ ◆ ◆             ║
-    ╚══════════════════════════════════════════════════════════╝
+HACKATHONS & COMPETITIONS
 
-🎨 [Event Website - National Technical Symposium]
-   React | Tailwind CSS | Node.js | 2024-2025
+🥈 InWinHack 2024 — 2nd Place
+Built a customizable AI chatbot in 24-hour hackathon
+Tech: Python, NLP, Machine Learning
+Team: 4 members
 
-   ┌─────────────────────────────────────────────────────────┐
-   │  Event Information & Management                         │
-   │  ├─ Event schedules & timelines                         │
-   │  ├─ Venue & logistics information                       │
-   │  └─ Live updates & announcements                        │
-   │                                                          │
-   │  Registration System                                    │
-   │  ├─ Event registration for participants                 │
-   │  ├─ Team formation & management                         │
-   │  └─ Automated confirmation emails                       │
-   │                                                          │
-   │  Management Dashboard                                   │
-   │  ├─ Participant tracking                                │
-   │  ├─ Real-time statistics                                │
-   │  └─ Event analytics & reporting                         │
-   └─────────────────────────────────────────────────────────┘
+────────────────────────────────────────────
 
-──────────────────────────────────────────────────────────────
+LEADERSHIP & POSITIONS
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◆ ◆ ◆ ◆  SVUCE COLLEGE PORTAL  ◆ ◆ ◆ ◆             ║
-    ╚══════════════════════════════════════════════════════════╝
+👨‍💼 Technical Team Head — Sigmoid 2025
+Led technical team for national-level technical symposium
+Managed website, registrations, and technical infrastructure
+Coordinated with 20+ team members
 
-🎓 [College Management System]
-   React | Node.js | MongoDB | Tailwind CSS | Ongoing
+────────────────────────────────────────────
 
-   ┌─────────────────────────────────────────────────────────┐
-   │  Student Management                                     │
-   │  ├─ Student information database                        │
-   │  ├─ Profile management & updates                        │
-   │  └─ Attendance tracking system                          │
-   │                                                          │
-   │  Course & Academic Management                           │
-   │  ├─ Course registration & enrollment                    │
-   │  ├─ Grade management & transcripts                      │
-   │  ├─ Academic calendar & schedules                       │
-   │  └─ Course materials & assignments                      │
-   │                                                          │
-   │  Performance & Analytics                                │
-   │  ├─ Performance improvement: +40%                       │
-   │  ├─ Automated backup systems                            │
-   │  ├─ Database scaling & optimization                     │
-   │  └─ Enhanced UI/UX for better usability                 │
-   └─────────────────────────────────────────────────────────┘
+ACADEMIC ACHIEVEMENTS
 
-──────────────────────────────────────────────────────────────
+🌟 AIR 18 — AMECET (All India Rank)
+Secured top 20 nationwide in engineering entrance exam
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◆ ◆ ◆ ◆  PYTHON SNAKE GAME  ◆ ◆ ◆ ◆               ║
-    ╚══════════════════════════════════════════════════════════╝
+📈 93.6 Percentile — JEE Main
+Top 7% among 1 million+ candidates in India's toughest exam
 
-🐍 [Python Desktop Game]
-   Python 3 | Pygame | OOP | Solo Project
+📚 96.3% — Higher Secondary (CBSE)
+Top percentile performance in board examinations
 
-   ┌─────────────────────────────────────────────────────────┐
-   │  Game Mechanics                                         │
-   │  ├─ Classic snake movement controls                     │
-   │  ├─ Collision detection (walls & self)                  │
-   │  ├─ Food spawning & eating mechanics                    │
-   │  └─ Score tracking & high scores                        │
-   │                                                          │
-   │  Visual & Audio                                         │
-   │  ├─ Smooth animations & rendering                       │
-   │  ├─ Sound effects for gameplay events                   │
-   │  ├─ Multiple difficulty levels                          │
-   │  └─ UI for menus & game over screens                    │
-   │                                                          │
-   │  Learning Outcomes                                      │
-   │  ├─ Game loop programming patterns                      │
-   │  ├─ OOP design & architecture                           │
-   │  ├─ Event handling & input processing                   │
-   │  └─ Performance optimization techniques                 │
-   └─────────────────────────────────────────────────────────┘
+────────────────────────────────────────────
 
-=======================================================================
-`,
+OPEN SOURCE CONTRIBUTIONS
 
-  socials: `$ cat /home/gowtham/socials.txt
-=======================================================================
-                    SOCIAL & PROFESSIONAL LINKS
-=======================================================================
+🔱 GitHub Pull Shark Badge
+Recognized for consistent pull request contributions
 
-🔗 PROFESSIONAL PROFILES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🤝 Pair Extraordinaire Badge
+Acknowledged for collaborative coding patterns
 
-📱 LinkedIn
-   Profile: linkedin.com/in/gowtham-sree-tharigopula
-   Connections: 323+ Professional Network
-   Status: Open to Software Engineer & Python Developer roles
-   Current: Information Systems Engineer @ Lumen Technologies
+────────────────────────────────────────────
 
-💻 GitHub
-   Username: @tharigopula
-   Badge: 🐙 Pull Shark (Active in open source)
-   Repositories: Portfolio of projects and contributions
-   Focus: Cloud, Automation, Full-Stack Development
+EXTRACURRICULAR
+
+🏀 Basketball Player - ECE Department Team
+🤝 NSS Volunteer - Social service activities
+🎤 Event Organizer - Technical symposiums`,
+
+  socials: `SOCIAL LINKS
+
+Connect with me on various platforms:
+
+💼 LinkedIn
+https://linkedin.com/in/gowthamsree
+
+🐙 GitHub
+https://github.com/gowtham2303
 
 📧 Email
-   Primary: gowtham.sree@example.com
-   Professional: Available for inquiries and collaboration
-   Response Time: 24-48 hours
+gowtham.sree@example.com
 
-🌍 Other Platforms
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📱 Twitter/X
+@gowtham_sree
 
-   📌 Location: Bengaluru, Karnataka, India
-   🏢 Company: Lumen Technologies
-   🎓 Education: Sri Venkateswara University
-   🔗 Portfolio: Available upon request
+🌐 Portfolio
+https://gowtham-portfolio.vercel.app
 
-=======================================================================
+📍 Location
+Bengaluru, Karnataka, India
 
-For direct contact, use the 'contact' command.
-`,
+────────────────────────────────────────────
 
-  contact: `$ mail -s "Let's Connect" gowtham
+💡 Open to:
+• Interesting conversations about tech
+• Collaboration opportunities
+• Full-time positions
+• Freelance projects
 
-=======================================================================
-                    CONTACT INFORMATION
-=======================================================================
+⚡ Response time: Within 24 hours`,
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◊ ◊ ◊ ◊  DIRECT COMMUNICATION  ◊ ◊ ◊ ◊              ║
-    ╚══════════════════════════════════════════════════════════╝
+  contact: `GET IN TOUCH
 
-📧 EMAIL ADDRESSES
-   ├─ Work Email:      gowtham.sree@lumen.com
-   ├─ Personal Email:  gowtham.tharigopula@gmail.com
-   └─ Contact:         reach.gowtham@outlook.com
+I'm always open to interesting conversations, whether it's about a 
+project, collaboration, or just talking tech.
 
-📱 PROFESSIONAL LINKS
-   ├─ GitHub:         https://github.com/tharigopula
-   │                  └─ Pull Shark Badge | Open Source Contributor
-   │
-   ├─ LinkedIn:       https://linkedin.com/in/gowtham-sree-tharigopula
-   │                  └─ 323+ Connections | ISE @ Lumen Technologies
-   │
-   └─ Portfolio:      https://gowtham-sree.dev
+📧 EMAIL
+gowtham.sree@example.com
+Response time: Within 24 hours
 
+💼 LINKEDIN
+linkedin.com/in/gowthamsree
+Best for professional networking
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◊ ◊ ◊ ◊  PROFESSIONAL PROFILE  ◊ ◊ ◊ ◊              ║
-    ╚══════════════════════════════════════════════════════════╝
+🐙 GITHUB
+github.com/gowtham2303
+Check out my code and contributions
 
-🏢 CURRENT POSITION
-   Company:           Lumen Technologies
-   Role:              Information Systems Engineer
-   Location:          Bengaluru, Karnataka, India
-   Employment:        Full-Time (Hybrid)
-   Duration:          August 2025 - Present
+📍 LOCATION
+Bengaluru, Karnataka, India
+Available for: Remote, Hybrid, On-site (Bengaluru)
 
-📍 LOCATION & AVAILABILITY
-   City:              Bengaluru, Karnataka
-   Country:           India
-   Timezone:          IST (UTC+5:30)
-   Open to Work:      Yes ✓
+────────────────────────────────────────────
 
-⏰ RESPONSE TIME
-   Email Response:    24-48 hours
-   Preferred Contact: LinkedIn or Email
-   Meeting Availability: Flexible (Book via Calendly)
+💬 SEND MESSAGE
+Use command: message <your-message>
+Example: message Hi Gowtham, I'd like to discuss a project
 
+📄 DOWNLOAD RESUME
+Use command: resume
+Get my latest resume in PDF format
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◊ ◊ ◊ ◊  COLLABORATION INTERESTS  ◊ ◊ ◊ ◊           ║
-    ╚══════════════════════════════════════════════════════════╝
+────────────────────────────────────────────
 
-I'm open to discussions for:
-   ✓ Full-Time Software Engineer Positions
-   ✓ Python Developer & Automation Roles
-   ✓ Cloud Infrastructure & DevOps
-   ✓ Technical Consulting & Mentoring
-   ✓ Open Source Collaboration
-   ✓ Contract & Freelance Projects
-   ✓ Technical Blogging & Content Creation
+🤝 Looking for:
+• Full-time opportunities in Cloud/DevOps/Full Stack
+• Freelance projects
+• Open source collaborations
+• Speaking opportunities at tech events`,
 
+  help: `AVAILABLE COMMANDS
 
-    ╔══════════════════════════════════════════════════════════╗
-    ║  ◊ ◊ ◊ ◊  QUICK CONTACT MATRIX  ◊ ◊ ◊ ◊             ║
-    ╚══════════════════════════════════════════════════════════╝
+INFORMATION COMMANDS:
+about          Learn about Gowtham Sree
+skills         View technical skills and expertise
+education      Educational background and qualifications
+experience     Work experience timeline
+projects       Notable projects and work
+certifications View achievements and certifications
+socials        Social media links and profiles
+contact        Get contact information
 
-Purpose          │ Best Channel       │ Expected Response
-─────────────────┼────────────────────┼────────────────────
-Job Opportunity  │ LinkedIn Message   │ 24 hours
-Technical Query  │ Email              │ 24-48 hours
-Collaboration    │ GitHub Issues      │ 48 hours
-General Inquiry  │ LinkedIn           │ 48 hours
-Urgent Matter    │ Email (URGENT tag) │ ASAP
+SYSTEM COMMANDS:
+help           Show this help message
+clear          Clear the terminal screen
+whoami         Display current user
+pwd            Print working directory
+uname          System information
+ls             List directory contents
+date           Show current date and time
 
-=======================================================================
+INTERACTION COMMANDS:
+message <msg>  Send me a message directly
+resume         Download resume (PDF)
+gui            Switch to GUI mode
 
-Click any button above to explore more sections!
-`,
+EXAMPLES:
+$ message Hi Gowtham, I'd like to discuss a project
+$ resume
+$ gui
 
-  uname: `$ uname -a
-Linux gowtham 6.1.0-kali5-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.12-1kali2 x86_64 GNU/Linux
+────────────────────────────────────────────
 
-$ uname -r
-Information Systems Engineer Portfolio - Version 1.0.0
+💡 TIP: Click the command buttons below for quick access!`,
 
-$ hostnamectl
-Static hostname: cybersec-workstation
-Icon name: computer-laptop
-Chassis: laptop
-Machine ID: a1b2c3d4e5f6g7h8
-Boot ID: x9y8z7w6v5u4t3s2
-`,
+  whoami: `gowtham@cybersec-terminal`,
 
-  whoami: `$ whoami
-gowtham
+  pwd: `/home/gowtham/portfolio`,
 
-$ id
-uid=1000(gowtham) gid=1000(users) groups=1000(users),27(sudo),1001(developers)
-`,
+  uname: `Linux cybersec-terminal 6.1.0-kali5-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.1.0 x86_64 GNU/Linux`,
 
-  pwd: `$ pwd
-/home/gowtham/portfolio
-`,
+  ls: `about  education  skills  experience  projects  certifications  socials  contact  resume.pdf`,
+
+  date: () => {
+    const now = new Date();
+    return now.toString();
+  },
+
+  clear: 'CLEAR_COMMAND',
+
+  gui: 'GUI_MODE',
+
+  resume: 'DOWNLOAD_RESUME',
+};
+
+export const SYSTEM_INFO = {
+  user: 'gowtham',
+  hostname: 'cybersec-terminal',
+  directory: '/home/gowtham/portfolio',
+  shell: 'bash',
 };

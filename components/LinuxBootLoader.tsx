@@ -11,12 +11,10 @@ export function LinuxBootLoader({ onBootComplete }: BootLoaderProps) {
   const [isComplete, setIsComplete] = useState(false);
 
   const bootMessages = [
-    '[ OK ] Linux kernel 6.1.0-kali5-amd64 booting...',
-    '[ OK ] BIOS-provided physical RAM map:',
-    '[ OK ] BIOS-e820: [mem 0x0000000000000000-0x000000000009efff] usable',
+    '[ OK ] Linux kernel 6.1.0-cybersec-amd64 booting...',
+    '[ OK ] BIOS-provided physical RAM map',
     '[ OK ] NX (Execute Disable) protection: active',
-    '[ OK ] Initializing CGROUP subsys cpu',
-    '[ OK ] Initializing CGROUP subsys cpuacct',
+    '[ OK ] Initializing CGROUP subsystems',
     '[ OK ] Loading Azure Cloud Infrastructure modules...',
     '[ OK ] Mounting Microsoft Terraform v1.6.3 engine...',
     '[ OK ] Initializing Python 3.11.6 runtime environment...',
@@ -26,22 +24,25 @@ export function LinuxBootLoader({ onBootComplete }: BootLoaderProps) {
     '[ OK ] Loading Docker container orchestration...',
     '[ OK ] Mounting Kubernetes cluster configuration...',
     '[ OK ] Setting up GitHub repository access...',
-    '[ OK ] Loading Kali Linux security tools...',
+    '[ OK ] Loading security tools suite...',
     '[ OK ] Establishing connection to Lumen Technologies...',
     '[ OK ] Verifying SSH key authentication...',
-    '[ OK ] Loading portfolio database (/home/gowtham/portfolio/)...',
+    '[ OK ] Loading portfolio database...',
     '[ OK ] Initializing terminal emulator...',
     '[ OK ] Starting X server environment...',
     '[ OK ] Boot completed successfully!',
     '',
-    'Welcome to Linux',
+    'Gowtham Sree Portfolio System v2.0',
     '',
     'gowtham@cybersec login: gowtham',
     'Password: •••••••••',
-    'Last login: Mon Mar 18 2026 from 192.168.1.100',
-    '',
-    'Welcome to the terminal portfolio of Gowtham Sree',
-    'Type "help" for available commands.',
+    'Last login: ' + new Date().toLocaleString('en-US', { 
+      weekday: 'short', 
+      month: 'short', 
+      day: 'numeric', 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    }),
     '',
   ];
 
@@ -54,28 +55,42 @@ export function LinuxBootLoader({ onBootComplete }: BootLoaderProps) {
       } else {
         clearInterval(interval);
         setIsComplete(true);
-        setTimeout(onBootComplete, 1000);
+        setTimeout(onBootComplete, 800);
       }
-    }, 80);
+    }, 60); // Faster boot sequence
 
-    return () => clearInterval(interval);
+    // Allow Enter key to skip
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        clearInterval(interval);
+        setIsComplete(true);
+        onBootComplete();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('keydown', handleKeyPress);
+    };
   }, [onBootComplete]);
 
   return (
-    <div className="w-full h-screen bg-black flex flex-col p-8 font-mono overflow-hidden">
-      <div className="flex-1 overflow-y-auto">
+    <div className="w-full h-screen bg-black flex flex-col p-4 md:p-8 font-mono overflow-hidden scan-lines">
+      <div className="flex-1 overflow-y-auto terminal-scrollbar">
         {lines.map((line, idx) => (
           <div
             key={idx}
-            className="terminal-green text-sm boot-animation whitespace-pre-wrap break-words"
+            className="text-green-400 text-xs md:text-sm boot-animation whitespace-pre-wrap break-words leading-relaxed"
           >
             {line}
           </div>
         ))}
       </div>
       {isComplete && (
-        <div className="terminal-green text-center py-4 text-sm">
-          [System Ready]
+        <div className="text-green-400 text-center py-4 text-sm animate-pulse">
+          [System Ready - Press Enter to Continue]
         </div>
       )}
     </div>
