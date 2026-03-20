@@ -1,15 +1,15 @@
 # Gowtham Sree - Professional Terminal Portfolio
 
-A sophisticated Linux terminal-styled portfolio with dual-mode interface: authentic CLI experience and Windows Lumia-inspired GUI.
+A sophisticated, fully responsive Linux terminal-styled portfolio with dual-mode interface: authentic CLI experience with green commands (#00FF00) and white content, plus a Windows Lumia-inspired GUI with fully working draggable, resizable windows and Kali Linux desktop background.
 
 ## Features
 
-### Terminal Mode (Default)
-- **Authentic Linux Commands**: Real terminal commands like `pwd`, `whoami`, `date`, `uname -a`, `history`, `clear`
-- **Green Command Text**: Commands appear in vibrant green (#00FF00) for hacker aesthetic
-- **White Content Output**: All portfolio information displays in clean white text
-- **Fast Streaming**: Content streams character-by-character at 2ms per character for hacker-like effect
-- **Command History**: Navigate previous commands using UP/DOWN arrow keys
+### Terminal Mode (Default - Fully Mobile Responsive)
+- **Authentic Linux Commands**: Real commands like `pwd`, `whoami`, `date`, `uname -a`, `clear`
+- **Green Commands, White Content**: Commands display in vibrant green, all output in white text
+- **Fast Streaming**: 1ms per character animation for authentic hacker experience
+- **Command History**: Navigate with UP/DOWN arrow keys, full command persistence
+- **Mobile Optimized**: Responsive font sizes, touch-friendly buttons, scrollable on all devices
 - **Real Commands Supported**:
   - `pwd` - Print working directory
   - `whoami` - Show current user
@@ -31,13 +31,15 @@ A sophisticated Linux terminal-styled portfolio with dual-mode interface: authen
 - **help** - Display all available commands
 - **message <text>** - Send message via default email client
 
-### GUI Mode
-- **Windows Lumia Design**: Modern tile-based interface with gradient background
-- **Interactive Tiles**: 8 colorful tiles for quick access to portfolio sections
-- **Draggable Windows**: Open multiple content windows simultaneously
-- **Window Management**: Minimize, maximize, and close windows
-- **Quick Links**: Direct access to GitHub, LinkedIn, Email, and Resume
-- **Responsive Design**: Fully optimized for desktop and mobile devices
+### GUI Mode (Fully Functional & Mobile Responsive)
+- **Windows Lumia Tiles**: 7 colorful tile apps (About, Skills, Education, Experience, Projects, Achievements, Contact)
+- **Fully Draggable Windows**: Click and drag title bars to move windows anywhere
+- **Fully Resizable Windows**: Drag bottom-right corner to resize (minimum 300x200)
+- **Window Management**: Minimize buttons collapse to taskbar, maximize/restore, close buttons
+- **Kali Linux Desktop**: Dark background with terminal aesthetic, minimized app taskbar at bottom
+- **Quick Links in Header**: GitHub, LinkedIn, Email, Resume icons in top bar
+- **Mobile Friendly**: On mobile, windows auto-maximize; responsive tile grid
+- **Z-Index Management**: Windows always bring to front on interaction
 
 ### Boot Sequence
 - **Realistic System Startup**: 25+ authentic Linux boot messages
