@@ -275,8 +275,7 @@ export function InteractiveTerminal() {
   };
 
   const handleCommandClick = (cmd: string) => {
-    setInput(cmd);
-    inputRef.current?.focus();
+    executeCommand(cmd);
     setTimeout(() => {
       executeCommand(cmd);
     }, 100);
