@@ -49,14 +49,45 @@ export function InteractiveTerminal() {
   const streamText = async (text: string) => {
     setIsStreaming(true);
     
-    // Add entire text as single output instead of streaming character by character
+    // Create a single output line that will be animated
+    const lineIndex = lines.length;
     setLines((prev) => [
       ...prev,
       {
         type: 'output',
-        content: text,
+        content: '',
+        isStreaming: true,
       },
     ]);
+
+    // Stream the entire text character by character into a single line
+    for (let i = 0; i < text.length; i++) {
+      setLines((prev) => {
+        if (prev[lineIndex]) {
+          const updatedLines = [...prev];
+          updatedLines[lineIndex] = {
+            ...updatedLines[lineIndex],
+            content: text.substring(0, i + 1),
+          };
+          return updatedLines;
+        }
+        return prev;
+      });
+      await new Promise((resolve) => setTimeout(resolve, 5)); // 5ms per character for smooth streaming
+    }
+
+    // Mark streaming as complete
+    setLines((prev) => {
+      if (prev[lineIndex]) {
+        const updatedLines = [...prev];
+        updatedLines[lineIndex] = {
+          ...updatedLines[lineIndex],
+          isStreaming: false,
+        };
+        return updatedLines;
+      }
+      return prev;
+    });
 
     setIsStreaming(false);
   };
