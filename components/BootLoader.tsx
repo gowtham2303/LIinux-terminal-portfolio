@@ -1,78 +1,85 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 interface BootLoaderProps {
-  onComplete: () => void;
+  onBootComplete: () => void;
 }
 
-const BOOT_MESSAGES = [
-  'BIOS v2.1.0 © 2024 Cybersec Corp',
-  '===================================',
+const bootMessages = [
+  'BIOS v6.2.0 POST Test...',
+  'CPU: Intel Core i7-13700K @ 3.4GHz',
+  'RAM: 32GB DDR5 Test... PASS',
+  'Storage: 1TB NVMe SSD Detected',
   '',
-  'Initializing system...',
-  'Detecting hardware...',
-  'Loading kernel modules...',
-  'Initializing network adapter [OK]',
-  'Mounting filesystems...',
-  'Starting system services...',
+  'Initializing Linux kernel 6.2.0...',
+  'Loading boot modules...',
+  'Detecting PCI devices [OK]',
+  'Initializing AHCI controller [OK]',
+  'Starting udev daemon [OK]',
+  'Mounting root filesystem (ext4) [OK]',
+  'Mounting /boot partition [OK]',
+  'Starting systemd initialization [OK]',
+  'Loading network drivers [OK]',
+  'Configuring network interfaces...',
+  'eth0: initialized [OK]',
+  'Starting SSH server (port 22) [OK]',
+  'Loading Docker daemon [OK]',
+  'Starting PostgreSQL service [OK]',
+  'Starting nginx web server [OK]',
+  'Loading Node.js v20.10.0 runtime [OK]',
+  'Initializing user session...',
   '',
-  'Loading packages:',
-  '  [████████░░░░░░░░░░] 25% - React',
-  '  [████████████░░░░░░░] 50% - TypeScript',
-  '  [████████████████░░░░] 75% - Tailwind CSS',
-  '  [██████████████████░░] 90% - Next.js',
-  '  [████████████████████] 100% - Portfolio',
-  '',
-  'System initialization complete.',
-  'Starting login shell...',
-  '',
+  'System boot completed in 12.34 seconds',
+  'Welcome to Ubuntu 24.04 LTS',
 ];
 
-export default function BootLoader({ onComplete }: BootLoaderProps) {
-  const [displayedText, setDisplayedText] = useState<string[]>([]);
-  const [messageIndex, setMessageIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
+export function BootLoader({ onBootComplete }: BootLoaderProps) {
+  const [messages, setMessages] = useState<string[]>([]);
+  const [canSkip, setCanSkip] = useState(false);
 
   useEffect(() => {
-    if (messageIndex >= BOOT_MESSAGES.length) {
-      const timer = setTimeout(() => {
-        onComplete();
-      }, 800);
-      return () => clearTimeout(timer);
-    }
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < bootMessages.length) {
+        setMessages((prev) => [...prev, bootMessages[index]]);
+        index++;
+      } else {
+        clearInterval(interval);
+        setTimeout(onBootComplete, 500);
+      }
+    }, 120);
 
-    const currentMessage = BOOT_MESSAGES[messageIndex];
-    
-    if (charIndex < currentMessage.length) {
-      const timer = setTimeout(() => {
-        setCharIndex(charIndex + 1);
-      }, 15);
-      return () => clearTimeout(timer);
-    } else {
-      const timer = setTimeout(() => {
-        const newDisplayedText = [...displayedText, currentMessage];
-        setDisplayedText(newDisplayedText);
-        setMessageIndex(messageIndex + 1);
-        setCharIndex(0);
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [messageIndex, charIndex, displayedText, onComplete]);
+    setTimeout(() => setCanSkip(true), 1000);
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (canSkip && (e.key === 'Enter' || e.key === ' ')) {
+        clearInterval(interval);
+        onBootComplete();
+      }
+    };
+
+    window.addEventListener('keydown', handleKey);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [canSkip, onBootComplete]);
 
   return (
-    <div className="w-full h-screen bg-black border border-foreground overflow-hidden scan-lines flex flex-col p-4">
-      <div className="flex-1 overflow-y-auto space-y-0 text-sm">
-        {displayedText.map((line, idx) => (
-          <div key={idx} className="text-foreground leading-relaxed h-5">
-            {line}
+    <div className="w-full h-screen bg-black text-white font-mono text-xs sm:text-sm overflow-hidden flex flex-col">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-0">
+        {messages.map((msg, idx) => (
+          <div key={idx} className="leading-relaxed">
+            {msg}
           </div>
         ))}
-        {messageIndex < BOOT_MESSAGES.length && (
-          <div className="text-foreground leading-relaxed h-5">
-            {BOOT_MESSAGES[messageIndex].substring(0, charIndex)}
-            <span className="cursor ml-0.5">_</span>
-          </div>
-        )}
       </div>
+      {canSkip && (
+        <div className="p-3 sm:p-6 text-center text-cyan-400 text-xs">
+          Press ENTER to skip...
+        </div>
+      )}
     </div>
   );
 }

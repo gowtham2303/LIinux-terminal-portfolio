@@ -167,9 +167,136 @@ export function InteractiveTerminal() {
       },
     ]);
 
+    // Stream the entire text character by character into a single line
+    for (let i = 0; i < text.length; i++) {
+      setLines((prev) => {
+        if (prev[lineIndex]) {
+          const updatedLines = [...prev];
+          updatedLines[lineIndex] = {
+            ...updatedLines[lineIndex],
+            content: text.substring(0, i + 1),
+          };
+          return updatedLines;
+        }
+        return prev;
+      });
+      await new Promise((resolve) => setTimeout(resolve, 5)); // 5ms per character for smooth streaming
+    }
+
+    // Mark streaming as complete
+    setLines((prev) => {
+      if (prev[lineIndex]) {
+        const updatedLines = [...prev];
+        updatedLines[lineIndex] = {
+          ...updatedLines[lineIndex],
+          isStreaming: false,
+        };
+        return updatedLines;
+      }
+      return prev;
+    });
+
+    setIsStreaming(false);
+  };
+
+  const handleMessage = async (message: string) => {
+    const mailtoLink = `mailto:gowtham.sree@example.com?subject=Portfolio Contact&body=${encodeURIComponent(message)}`;
+    window.open(mailtoLink, '_blank');
+    
+    setLines((prev) => [
+      ...prev,
+      {
+        type: 'system',
+        content: '✓ Opening email client with your message...',
+      },
+      {
+        type: 'output',
+        content: 'Message: "' + message + '"',
+      },
+    ]);
+  };
+
+  const handleResume = () => {
+    setLines((prev) => [
+      ...prev,
+      {
+        type: 'system',
+        content: '📄 Downloading resume...',
+      },
+      {
+        type: 'output',
+        content: (
+          <div className="flex items-center gap-2 mt-2">
+            <a
+              href="/resume.pdf"
+              download="Gowtham_Sree_Resume.pdf"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-black font-bold rounded transition-colors text-sm"
+            >
+              <Download className="w-4 h-4" />
+              Download Resume
+            </a>
+          </div>
+        ),
+      },
+    ]);
+  };
+
+  const executeCommand = async (cmd: string) => {
+    const trimmedCmd = cmd.trim();
+
+    if (trimmedCmd) {
+      setCommandHistory((prev) => [...prev, trimmedCmd]);
+      setHistoryIndex(-1);
+    }
+
+    setLines((prev) => [
+      ...prev,
+      {
+        type: 'command',
+        content: `${SYSTEM_INFO.user}@${SYSTEM_INFO.hostname}:${SYSTEM_INFO.directory}$ ${cmd}`,
+      },
+    ]);
+
     setInput('');
 
     if (!trimmedCmd) {
+      return;
+    }
+
+    const lowerCmd = trimmedCmd.toLowerCase();
+
+    if (lowerCmd.startsWith('message ')) {
+      const message = trimmedCmd.substring(8);
+      if (message.trim()) {
+        await handleMessage(message);
+      } else {
+        setLines((prev) => [
+          ...prev,
+          {
+            type: 'error',
+            content: 'Usage: message <your-message>',
+          },
+        ]);
+      }
+      return;
+    }
+
+    if (lowerCmd === 'resume') {
+      handleResume();
+      return;
+    }
+
+    if (lowerCmd === 'gui') {
+      setLines((prev) => [
+        ...prev,
+        {
+          type: 'system',
+          content: '🖥️  Launching GUI mode...',
+        },
+      ]);
+      setTimeout(() => {
+        window.location.href = '/gui';
+      }, 500);
       return;
     }
 
