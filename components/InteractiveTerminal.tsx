@@ -48,49 +48,15 @@ export function InteractiveTerminal() {
 
   const streamText = async (text: string) => {
     setIsStreaming(true);
-    const textLines = text.split('\n');
-
-    for (const line of textLines) {
-      setLines((prev) => [
-        ...prev,
-        {
-          type: 'output',
-          content: '',
-          isStreaming: true,
-        },
-      ]);
-      
-      for (let i = 0; i < line.length; i++) {
-        setLines((prev) => {
-          const lastLine = prev[prev.length - 1];
-          if (lastLine && lastLine.isStreaming) {
-            return [
-              ...prev.slice(0, -1),
-              {
-                ...lastLine,
-                content: lastLine.content + line[i],
-              },
-            ];
-          }
-          return prev;
-        });
-        await new Promise((resolve) => setTimeout(resolve, 1));
-      }
-      
-      setLines((prev) => {
-        const lastLine = prev[prev.length - 1];
-        if (lastLine && lastLine.isStreaming) {
-          return [
-            ...prev.slice(0, -1),
-            {
-              ...lastLine,
-              isStreaming: false,
-            },
-          ];
-        }
-        return prev;
-      });
-    }
+    
+    // Add entire text as single output instead of streaming character by character
+    setLines((prev) => [
+      ...prev,
+      {
+        type: 'output',
+        content: text,
+      },
+    ]);
 
     setIsStreaming(false);
   };
@@ -214,7 +180,7 @@ export function InteractiveTerminal() {
       education: TERMINAL_DATA.education,
       experience: TERMINAL_DATA.experience,
       projects: TERMINAL_DATA.projects,
-      certifications: TERMINAL_DATA.certifications,
+      achievements: TERMINAL_DATA.achievements,
       socials: TERMINAL_DATA.socials,
       contact: TERMINAL_DATA.contact,
       help: TERMINAL_DATA.help,
