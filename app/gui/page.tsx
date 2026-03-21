@@ -1,6 +1,8 @@
 'use client';
-
-import { F1Scene3D } from '@/components/F1Scene3D';
+ 
+import { GUIMode } from '@/components/GUIMode';
+ 
 export default function GUIPage() {
-  return <F1Scene3D />;
+  return <GUIMode />;
 }
+ 

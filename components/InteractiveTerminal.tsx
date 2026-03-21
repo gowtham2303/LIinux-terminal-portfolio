@@ -48,15 +48,122 @@ export function InteractiveTerminal() {
 
   const streamText = async (text: string) => {
     setIsStreaming(true);
+    const textLines = text.split('\n');
+
+    for (const line of textLines) {
+      setLines((prev) => [
+        ...prev,
+        {
+          type: 'output',
+          content: '',
+          isStreaming: true,
+        },
+      ]);
+      
+      for (let i = 0; i < line.length; i++) {
+        setLines((prev) => {
+          const lastLine = prev[prev.length - 1];
+          if (lastLine && lastLine.isStreaming) {
+            return [
+              ...prev.slice(0, -1),
+              {
+                ...lastLine,
+                content: lastLine.content + line[i],
+              },
+            ];
+          }
+          return prev;
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1));
+      }
+      
+      setLines((prev) => {
+        const lastLine = prev[prev.length - 1];
+        if (lastLine && lastLine.isStreaming) {
+          return [
+            ...prev.slice(0, -1),
+            {
+              ...lastLine,
+              isStreaming: false,
+            },
+          ];
+        }
+        return prev;
+      });
+    }
+
+    setIsStreaming(false);
+  };
+
+  const handleMessage = async (message: string) => {
+    const mailtoLink = `mailto:gowtham.sree@example.com?subject=Portfolio Contact&body=${encodeURIComponent(message)}`;
+    window.open(mailtoLink, '_blank');
     
-    // Create a single output line that will be animated
-    const lineIndex = lines.length;
     setLines((prev) => [
       ...prev,
       {
+        type: 'system',
+        content: '✓ Opening email client with your message...',
+      },
+      {
         type: 'output',
-        content: '',
-        isStreaming: true,
+        content: 'Message: "' + message + '"',
+      },
+    ]);
+  };
+
+  const handleResume = () => {
+    setLines((prev) => [
+      ...prev,
+      {
+        type: 'system',
+        content: '📄 Downloading resume...',
+      },
+      {
+        type: 'output',
+        content: (
+          <div className="flex items-center gap-2 mt-2">
+            <a
+              href="/resume.pdf"
+              download="Gowtham_Sree_Resume.pdf"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-black font-bold rounded transition-colors text-sm"
+            >
+              <Download className="w-4 h-4" />
+              Download Resume
+            </a>
+          </div>
+        ),
+      },
+    ]);
+  };
+
+  const handleGUI = () => {
+    setLines((prev) => [
+      ...prev,
+      {
+        type: 'system',
+        content: '🖥️  Switching to GUI mode...',
+      },
+    ]);
+    
+    setTimeout(() => {
+      window.location.href = '/gui';
+    }, 500);
+  };
+
+  const executeCommand = async (cmd: string) => {
+    const trimmedCmd = cmd.trim();
+
+    if (trimmedCmd) {
+      setCommandHistory((prev) => [...prev, trimmedCmd]);
+      setHistoryIndex(-1);
+    }
+
+    setLines((prev) => [
+      ...prev,
+      {
+        type: 'command',
+        content: `${SYSTEM_INFO.user}@${SYSTEM_INFO.hostname}:${SYSTEM_INFO.directory}$ ${cmd}`,
       },
     ]);
 
@@ -193,6 +300,34 @@ export function InteractiveTerminal() {
       return;
     }
 
+    const lowerCmd = trimmedCmd.toLowerCase();
+
+    if (lowerCmd.startsWith('message ')) {
+      const message = trimmedCmd.substring(8);
+      if (message.trim()) {
+        await handleMessage(message);
+      } else {
+        setLines((prev) => [
+          ...prev,
+          {
+            type: 'error',
+            content: 'Usage: message <your-message>',
+          },
+        ]);
+      }
+      return;
+    }
+
+    if (lowerCmd === 'resume') {
+      handleResume();
+      return;
+    }
+
+    if (lowerCmd === 'gui') {
+      handleGUI();
+      return;
+    }
+
     if (lowerCmd === 'date') {
       const now = new Date();
       setLines((prev) => [
@@ -211,7 +346,7 @@ export function InteractiveTerminal() {
       education: TERMINAL_DATA.education,
       experience: TERMINAL_DATA.experience,
       projects: TERMINAL_DATA.projects,
-      achievements: TERMINAL_DATA.achievements,
+      certifications: TERMINAL_DATA.certifications,
       socials: TERMINAL_DATA.socials,
       contact: TERMINAL_DATA.contact,
       help: TERMINAL_DATA.help,
@@ -272,7 +407,8 @@ export function InteractiveTerminal() {
   };
 
   const handleCommandClick = (cmd: string) => {
-    executeCommand(cmd);
+    setInput(cmd);
+    inputRef.current?.focus();
     setTimeout(() => {
       executeCommand(cmd);
     }, 100);
@@ -311,10 +447,16 @@ export function InteractiveTerminal() {
     <div className="w-full h-screen bg-black flex flex-col overflow-hidden">
       {/* Terminal Header */}
       <div className="bg-gray-900 border-b border-gray-700 px-3 md:px-4 py-2 flex items-center justify-between flex-shrink-0">
-        <span className="text-gray-400 text-xs md:text-sm truncate hidden sm:inline font-mono">
-          {SYSTEM_INFO.user}@{SYSTEM_INFO.hostname}: {SYSTEM_INFO.directory}
-        </span>
-        <div className="flex-1" />
+        <div className="flex items-center gap-2 overflow-hidden">
+          <div className="flex gap-1.5 flex-shrink-0">
+            <div className="w-3 h-3 rounded-full bg-red-500 cursor-pointer hover:bg-red-600" onClick={() => window.close()}></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer hover:bg-yellow-600" onClick={toggleFullscreen}></div>
+            <div className="w-3 h-3 rounded-full bg-green-500 cursor-pointer hover:bg-green-600" onClick={toggleFullscreen}></div>
+          </div>
+          <span className="text-gray-400 text-xs md:text-sm ml-2 truncate hidden sm:inline">
+            {SYSTEM_INFO.user}@{SYSTEM_INFO.hostname}: {SYSTEM_INFO.directory}
+          </span>
+        </div>
         <div className="flex gap-2 md:gap-3 flex-shrink-0">
           <a
             href="https://github.com/gowtham2303"
@@ -334,6 +476,13 @@ export function InteractiveTerminal() {
           >
             <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
           </a>
+          <button
+            onClick={toggleFullscreen}
+            className="text-gray-400 hover:text-white transition-colors p-1 hidden md:block"
+            title="Toggle Fullscreen"
+          >
+            {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+          </button>
         </div>
       </div>
 
