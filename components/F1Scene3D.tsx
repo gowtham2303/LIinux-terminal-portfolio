@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Github, Linkedin, Mail, FileText, ArrowLeft } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText, ArrowLeft, X } from 'lucide-react';
 import Link from 'next/link';
 
 export function F1Scene3D() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [cardRotations, setCardRotations] = useState<Record<string, { x: number; y: number }>>({});
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -75,172 +76,233 @@ LinkedIn: linkedin.com/in/gowtham-sree-tharigopula
 Location: Bengaluru, India`,
   };
 
+  const handleCardHover = (id: string, e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientY - rect.top - rect.height / 2) / 25;
+    const y = -(e.clientX - rect.left - rect.width / 2) / 25;
+    setCardRotations({ ...cardRotations, [id]: { x, y } });
+  };
+
+  const handleCardLeave = (id: string) => {
+    setCardRotations({ ...cardRotations, [id]: { x: 0, y: 0 } });
+  };
+
   return (
     <div
       ref={containerRef}
       className="relative w-full h-screen bg-black overflow-hidden"
       style={{ cursor: 'none' }}
     >
-      {/* 3D Canvas Background */}
-      <canvas
-        className="absolute inset-0 w-full h-full"
-        id="f1-canvas"
-      />
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 z-0">
+        <svg className="w-full h-full opacity-5">
+          <defs>
+            <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+              <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#E8002D" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
 
-      {/* Cursor Glow */}
+      {/* Cursor Following Glow - Large Radial */}
       <div
-        className="fixed w-96 h-96 rounded-full pointer-events-none z-10"
+        className="fixed rounded-full pointer-events-none z-10"
         style={{
           left: `${mousePos.x}px`,
           top: `${mousePos.y}px`,
           transform: 'translate(-50%, -50%)',
-          background: 'radial-gradient(circle, rgba(232, 0, 45, 0.1) 0%, transparent 70%)',
-          transition: 'left 0.15s ease, top 0.15s ease',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(232, 0, 45, 0.08) 0%, transparent 70%)',
+          filter: 'blur(40px)',
+          transition: 'left 0.15s ease-out, top 0.15s ease-out',
         }}
       />
 
-      {/* Header */}
-      <header className="relative z-30 border-b border-red-900/30 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-black/40">
+      {/* Header with Glassmorphism */}
+      <header className="relative z-30 backdrop-blur-xl bg-black/30 border-b border-red-500/20 px-6 py-4 flex items-center justify-between">
         <Link href="/">
-          <button className="flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-mono text-sm">DESKTOP</span>
+          <button className="group flex items-center gap-2 text-red-500 hover:text-red-400 transition-all duration-300">
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-mono text-sm font-bold tracking-wider">DESKTOP</span>
           </button>
         </Link>
 
-        <div className="flex gap-4">
-          <a href="https://github.com/tharigopula" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors">
-            <Github className="w-5 h-5" />
-          </a>
-          <a href="https://linkedin.com/in/gowtham-sree-tharigopula" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors">
-            <Linkedin className="w-5 h-5" />
-          </a>
-          <a href="mailto:gowtham.tharigopula@gmail.com" className="text-gray-400 hover:text-red-500 transition-colors">
-            <Mail className="w-5 h-5" />
-          </a>
-          <a href="/resume.txt" download className="text-gray-400 hover:text-red-500 transition-colors">
-            <FileText className="w-5 h-5" />
-          </a>
+        <div className="flex gap-6">
+          {[
+            { icon: Github, href: 'https://github.com/tharigopula' },
+            { icon: Linkedin, href: 'https://linkedin.com/in/gowtham-sree-tharigopula' },
+            { icon: Mail, href: 'mailto:gowtham.tharigopula@gmail.com' },
+            { icon: FileText, href: '/resume.txt', download: true },
+          ].map((link, i) => (
+            <a
+              key={i}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              download={link.download}
+              className="text-gray-400 hover:text-red-500 transition-all duration-300 hover:scale-110"
+            >
+              <link.icon className="w-5 h-5" />
+            </a>
+          ))}
         </div>
       </header>
 
-      {/* Main Content Grid */}
+      {/* Main Content Grid with Enhanced Spacing */}
       <div className="relative z-20 h-[calc(100vh-80px)] overflow-y-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6 max-w-7xl mx-auto">
-          {sections.map((section) => (
-            <button
-              key={section.id}
-              onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
-              className={`group relative aspect-square rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-110 hover:shadow-2xl ${
-                activeSection === section.id ? 'ring-2 ring-red-500 shadow-lg shadow-red-500/50' : ''
-              }`}
-              style={{
-                background: `linear-gradient(135deg, var(--tw-gradient-stops))`,
-                backgroundImage: activeSection === section.id ? `linear-gradient(135deg, rgb(220 38 38) 0%, rgb(127 29 29) 100%)` : `linear-gradient(135deg, rgb(107 114 128 / 0.2) 0%, rgb(75 85 99 / 0.2) 100%)`,
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative flex flex-col items-center justify-center h-full gap-3 p-4">
-                <div className="text-3xl md:text-4xl font-black text-white" style={{ textShadow: '0 0 30px rgba(232, 0, 45, 0.5)' }}>
-                  {section.label.charAt(0)}
+        <div className="p-8 md:p-12 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {sections.map((section, idx) => (
+              <button
+                key={section.id}
+                onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
+                onMouseMove={(e) => handleCardHover(section.id, e)}
+                onMouseLeave={() => handleCardLeave(section.id)}
+                className={`group relative h-56 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 ${
+                  activeSection === section.id
+                    ? 'ring-2 ring-red-500 shadow-2xl shadow-red-500/50 scale-105'
+                    : 'hover:shadow-2xl hover:shadow-red-500/20'
+                }`}
+                style={{
+                  transitionDelay: `${idx * 50}ms`,
+                  transform: cardRotations[section.id]
+                    ? `perspective(1000px) rotateX(${cardRotations[section.id].x}deg) rotateY(${cardRotations[section.id].y}deg)`
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                }}
+              >
+                {/* Glassmorphism Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent backdrop-blur-md" />
+                
+                {/* Border Gradient */}
+                <div
+                  className="absolute inset-0 rounded-xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(232, 0, 45, 0.3), rgba(0, 210, 255, 0.1))',
+                    padding: '1px',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  <div className="inset-0 rounded-xl bg-black/60" />
                 </div>
-                <span className="font-mono text-xs md:text-sm font-bold text-white/80">{section.label}</span>
-              </div>
-            </button>
-          ))}
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Content */}
+                <div className="relative h-full flex flex-col items-center justify-center gap-4 p-6">
+                  <div
+                    className="text-5xl md:text-6xl font-black text-white transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      textShadow: '0 0 40px rgba(232, 0, 45, 0.6), 0 0 80px rgba(232, 0, 45, 0.3)',
+                      letterSpacing: '0.1em',
+                    }}
+                  >
+                    {section.label.charAt(0)}
+                  </div>
+                  <span className="font-mono text-xs md:text-sm font-bold text-white/70 uppercase tracking-widest group-hover:text-white transition-colors">
+                    {section.label}
+                  </span>
+                </div>
+
+                {/* Shine Effect */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300"
+                  style={{
+                    background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%)',
+                  }}
+                />
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Content Modal */}
+      {/* Content Modal with Enhanced Styling */}
       {activeSection && (
         <div
-          className="fixed inset-0 z-40 flex items-center justify-center p-4"
+          className="fixed inset-0 z-40 flex items-center justify-center p-4 backdrop-blur-sm"
           onClick={() => setActiveSection(null)}
         >
           <div
-            className="w-full max-w-2xl max-h-96 bg-black/95 border border-red-500/50 rounded-lg p-8 overflow-y-auto backdrop-blur-xl shadow-2xl shadow-red-500/20"
+            className="w-full max-w-3xl max-h-[80vh] bg-black/95 rounded-xl p-8 overflow-y-auto backdrop-blur-2xl shadow-2xl transition-all duration-300 animate-in fade-in zoom-in-95"
+            style={{
+              border: '1px solid rgba(232, 0, 45, 0.4)',
+              boxShadow: '0 0 60px rgba(232, 0, 45, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+            }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-2xl font-black text-red-500 mb-6 uppercase tracking-widest">
-              {sections.find((s) => s.id === activeSection)?.label}
-            </h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-3xl font-black text-red-500 uppercase tracking-wider">
+                {sections.find((s) => s.id === activeSection)?.label}
+              </h2>
+              <button
+                onClick={() => setActiveSection(null)}
+                className="text-gray-400 hover:text-red-500 transition-colors p-2 hover:bg-red-500/10 rounded-lg"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="border-b border-red-500/20 mb-6" />
+
             <p className="text-white/80 font-mono text-sm leading-relaxed whitespace-pre-line">
               {content[activeSection as keyof typeof content]}
             </p>
-            <button
-              onClick={() => setActiveSection(null)}
-              className="mt-6 px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-mono text-xs rounded transition-colors"
-            >
-              CLOSE
-            </button>
           </div>
         </div>
       )}
 
-      {/* 3D Elements Background Script */}
+      {/* Animated Cars Background */}
+      <svg
+        className="absolute inset-0 z-5 w-full h-full pointer-events-none"
+        id="f1-svg"
+      >
+        {/* Define car shapes */}
+        <defs>
+          <g id="f1-car">
+            <rect width="40" height="20" fill="currentColor" x="-20" y="-10" rx="3" />
+            <circle cx="-8" cy="8" r="4" fill="#333" />
+            <circle cx="8" cy="8" r="4" fill="#333" />
+          </g>
+        </defs>
+      </svg>
+
+      {/* Canvas for animated racing elements */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
             (function() {
-              const canvas = document.getElementById('f1-canvas');
-              if (!canvas) return;
+              const svg = document.getElementById('f1-svg');
+              if (!svg) return;
               
-              const ctx = canvas.getContext('2d');
-              if (!ctx) return;
-              
-              canvas.width = window.innerWidth;
-              canvas.height = window.innerHeight;
-              
-              let animationId;
               const cars = [
-                { x: 100, y: 200, angle: 0, speed: 2, color: '#E8002D', size: 30 },
-                { x: 400, y: 400, angle: Math.PI / 4, speed: 1.5, color: '#FFD700', size: 25 },
-                { x: 700, y: 100, angle: Math.PI, speed: 2.5, color: '#00D2FF', size: 28 },
+                { x: 100, y: 200, angle: 0, speed: 2, color: '#E8002D' },
+                { x: 400, y: 400, angle: 2, speed: 1.5, color: '#FFD700' },
+                { x: 700, y: 100, angle: 3.14, speed: 2.5, color: '#00D2FF' },
               ];
               
-              function drawCar(car) {
-                ctx.save();
-                ctx.translate(car.x, car.y);
-                ctx.rotate(car.angle);
-                
-                ctx.fillStyle = car.color;
-                ctx.fillRect(-car.size/2, -car.size/3, car.size, car.size/1.5);
-                
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.fillRect(-car.size/3, -car.size/4, car.size/3, car.size/3);
-                
-                ctx.restore();
-              }
-              
               function animate() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                cars.forEach(car => {
+                cars.forEach((car, idx) => {
                   car.x += Math.cos(car.angle) * car.speed;
                   car.y += Math.sin(car.angle) * car.speed;
                   
-                  if (car.x < -50) car.x = canvas.width + 50;
-                  if (car.x > canvas.width + 50) car.x = -50;
-                  if (car.y < -50) car.y = canvas.height + 50;
-                  if (car.y > canvas.height + 50) car.y = -50;
+                  if (car.x < -50) car.x = window.innerWidth + 50;
+                  if (car.x > window.innerWidth + 50) car.x = -50;
+                  if (car.y < -50) car.y = window.innerHeight + 50;
+                  if (car.y > window.innerHeight + 50) car.y = -50;
                   
-                  if (Math.random() < 0.01) {
-                    car.angle += (Math.random() - 0.5) * 0.3;
+                  // Change angle occasionally for more dynamic movement
+                  if (Math.random() < 0.02) {
+                    car.angle += (Math.random() - 0.5) * 0.5;
                   }
-                  
-                  drawCar(car);
                 });
                 
-                animationId = requestAnimationFrame(animate);
+                requestAnimationFrame(animate);
               }
               
               animate();
-              
-              window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-              });
             })();
           `,
         }}
