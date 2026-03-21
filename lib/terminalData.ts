@@ -1,73 +1,96 @@
 export const TERMINAL_DATA = {
-  welcome: `Welcome to GOWTHAM SREE's F1 Portfolio Terminal
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Type 'help' to see all commands or use the buttons below.`,
+  welcome: `Welcome to Gowtham Sree's Terminal Portfolio
+Type 'help' to see available commands or click the command buttons below.`,
 
-  about: `━━━ INFORMATION SYSTEMS ENGINEER ━━━
-LUMEN TECHNOLOGIES · BENGALURU, INDIA
+  about: `ABOUT ME
 
-Building production systems where infrastructure meets code.
+Information Systems Engineer at Lumen Technologies, Bengaluru.
 
-FOCUS AREAS:
-  • Cloud Infrastructure (Azure, Terraform, M365)
-  • Automation Pipelines & DevOps
-  • Full-Stack Applications at Scale
+I work where infrastructure meets product — cloud systems, automation 
+pipelines, and full-stack applications that actually ship.
 
-EDUCATION:
-  B.Tech Electronics & Communications
-  Sri Venkateswara University, Tirupati
-  GPA: 8.72 / 10.0
+EDUCATION
+ECE graduate from Sri Venkateswara University with an 8.72 GPA.
+Started as an intern at Lumen and converted full-time.
 
-KEY ACHIEVEMENTS:
-  ✓ 2nd Place InWinHack 2024 (AI Chatbot)
-  ✓ AIR 18 AMECET Entrance Exam
-  ✓ 93.6 Percentile JEE Main
-  ✓ Technical Team Lead - Sigmoid 2025`,
+EXPERIENCE
+Before Lumen, built production web apps at ZettaByte Plus and led 
+the technical team at Sigmoid 2025 — a national-level tech symposium.
 
-  skills: `━━━ TECHNICAL ARSENAL ━━━
+ACHIEVEMENTS
+• Won 2nd place at InWinHack building an AI chatbot
+• Scored AIR 18 in AMECET
+• 93.6 percentile in JEE Main
+• Played basketball for ECE department
+• NSS volunteer
+• Once studied at a Navodaya school in Rajasthan`,
+
+  skills: `TECHNICAL SKILLS
 
 CLOUD & INFRASTRUCTURE
-  → Microsoft Azure (85%)
-  → Terraform Infrastructure as Code (70%)
-  → Azure DevOps & M365 (80%)
+• Microsoft Azure - Provisioning, monitoring, managing services
+• Terraform - Infrastructure as Code, cloud resource management
+• M365 - Microsoft 365 enterprise ecosystem
 
-FRONTEND TECHNOLOGIES
-  → React & TypeScript (82%)
-  → Next.js 16+ Full Stack (82%)
-  → HTML5 / CSS3 / Tailwind (88%)
+PROCESS AUTOMATION
+• Power Automate - Workflow automation at enterprise scale
+• Scripting - System automation and integration
+• CI/CD Pipelines - Deployment automation
 
-BACKEND & AUTOMATION
-  → Node.js / Express.js (75%)
-  → Python 3 (78%)
-  → PostgreSQL / MySQL (65%)
-  → Power Automate & Scripting (80%)
+FRONTEND DEVELOPMENT
+• React / TypeScript - Modern component-driven development
+• Next.js - Server-side rendering & static generation
+• HTML5 / CSS3 - Semantic markup and responsive design
+• Tailwind CSS - Utility-first styling
 
-TOOLS & PLATFORMS
-  → Git / GitHub / GitLab
-  → Docker & Kubernetes
-  → Linux Administration`,
+BACKEND DEVELOPMENT
+• Node.js - JavaScript runtime for server applications
+• Express.js - Web framework for REST APIs
+• Python - Automation, scripting, AI/ML basics
 
-  education: `━━━ EDUCATIONAL BACKGROUND ━━━
+DATABASE & TOOLS
+• PostgreSQL / MySQL - Relational databases
+• Git & GitHub - Version control and collaboration
+• Docker - Containerization
+• Linux - System administration`,
 
-B.TECH ELECTRONICS & COMMUNICATIONS ENGINEERING
-  Sri Venkateswara University, Tirupati
-  June 2021 - April 2025
-  GPA: 8.72 / 10.0
+  education: `EDUCATION
 
-ACHIEVEMENTS:
-  ✓ Managed SVUCE Official College Website (2024-2025)
-  ✓ Technical Team Head - Sigmoid 2025 (National Symposium)
-  ✓ Led Technical Team at Sigmoid 2025
-  ✓ Built AI Chatbot (2nd Prize InWinHack)
+B.Tech — Electronics & Communications Engineering
+Sri Venkateswara University, Tirupati
+June 2021 — April 2025
 
-HIGHER SECONDARY EDUCATION (MPC)
-  Sri Viswasanthi Educational Institutions
-  June 2019 - May 2021
-  Grade: 96.3%
+GPA: 8.72 / 10.0
 
-COMPETITIVE EXAM SCORES:
-  ✓ AIR 18 - AMECET Entrance Exam
-  ✓ 93.6 Percentile - JEE Main`,
+Highlights:
+• Led Technical Team at Sigmoid 2025 (National Tech Symposium)
+• Built AI chatbots and automation systems
+• Active contributor to open-source projects
+
+────────────────────────────────────────────
+
+Higher Secondary — MPC (CBSE)
+Sri Viswasanthi Educational Institutions
+June 2019 — May 2021
+
+Score: 96.3%
+
+Achievements:
+• AIR 18 in AMECET (All India Rank)
+• 93.6 percentile in JEE Main
+• Top performer in Mathematics and Physics
+
+────────────────────────────────────────────
+
+Secondary School — CBSE
+Jawahar Navodaya Vidyalaya, Rajasthan
+July 2014 — April 2019
+
+Score: 93.6%
+
+Activities:
+• Migration year experience across different states
+• Active in sports and cultural activities`,
 
   experience: `WORK EXPERIENCE
 
@@ -167,7 +190,7 @@ Features:
 Tech: Python, Turtle Graphics
 Impact: Learning project showcasing Python fundamentals`,
 
-  achievements: `ACHIEVEMENTS & RECOGNITIONS
+  certifications: `ACHIEVEMENTS & CERTIFICATIONS
 
 HACKATHONS & COMPETITIONS
 
