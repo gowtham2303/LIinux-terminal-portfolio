@@ -303,16 +303,6 @@ export function InteractiveTerminal() {
         break;
     }
 
-    if (typeof line.content === 'string' && line.content.includes('<span')) {
-      return (
-        <div
-          key={idx}
-          className={className}
-          dangerouslySetInnerHTML={{ __html: line.content }}
-        />
-      );
-    }
-
     return (
       <div key={idx} className={className}>
         {line.content}
