@@ -1,100 +1,146 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Github, Linkedin, Mail, FileText, ArrowLeft, X } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText, ArrowLeft, X, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
 export function F1Scene3D() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [cardRotations, setCardRotations] = useState<Record<string, { x: number; y: number }>>({});
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const sections = [
-    { id: 'about', label: 'ABOUT', color: 'from-red-600 to-red-700' },
-    { id: 'skills', label: 'SKILLS', color: 'from-yellow-500 to-yellow-600' },
-    { id: 'education', label: 'EDUCATION', color: 'from-blue-600 to-blue-700' },
-    { id: 'experience', label: 'EXPERIENCE', color: 'from-cyan-500 to-cyan-600' },
-    { id: 'projects', label: 'PROJECTS', color: 'from-green-600 to-green-700' },
-    { id: 'achievements', label: 'ACHIEVEMENTS', color: 'from-purple-600 to-purple-700' },
-    { id: 'contact', label: 'CONTACT', color: 'from-pink-600 to-pink-700' },
+    { id: 'about', label: 'ABOUT', icon: '👤', color: 'from-red-600 to-red-700', accentColor: '#E8002D' },
+    { id: 'skills', label: 'SKILLS', icon: '⚙️', color: 'from-yellow-500 to-yellow-600', accentColor: '#FFD700' },
+    { id: 'education', label: 'EDUCATION', icon: '📚', color: 'from-blue-600 to-blue-700', accentColor: '#0099FF' },
+    { id: 'experience', label: 'EXPERIENCE', icon: '💼', color: 'from-cyan-500 to-cyan-600', accentColor: '#00D2FF' },
+    { id: 'projects', label: 'PROJECTS', icon: '🚀', color: 'from-green-600 to-green-700', accentColor: '#00FF88' },
+    { id: 'achievements', label: 'ACHIEVEMENTS', icon: '🏆', color: 'from-purple-600 to-purple-700', accentColor: '#BB00FF' },
+    { id: 'contact', label: 'CONTACT', icon: '📧', color: 'from-pink-600 to-pink-700', accentColor: '#FF00BB' },
   ];
 
   const content: Record<string, string> = {
-    about: `Information Systems Engineer at Lumen Technologies, Bengaluru.
+    about: `Information Systems Engineer at Lumen Technologies
 
-Building where infrastructure meets product – cloud systems, automation pipelines, and full-stack applications.
+Building where infrastructure meets product – cloud systems, automation 
+pipelines, and full-stack applications.
 
-ECE graduate from Sri Venkateswara University with 8.72 GPA.`,
+Location: Bengaluru, India
+Education: ECE graduate from Sri Venkateswara University (GPA: 8.72/10.0)
+Focus: Cloud Infrastructure, Automation, Full-Stack Development`,
 
-    skills: `• Cloud: Microsoft Azure, Terraform, Azure DevOps
-• Frontend: React, Next.js, TypeScript, Tailwind CSS
-• Backend: Node.js, Express.js, Python
-• Database: PostgreSQL, MySQL
-• DevOps: Docker, Kubernetes, CI/CD
-• Tools: Git, Linux, Power Automate`,
+    skills: `CLOUD & INFRASTRUCTURE
+  → Microsoft Azure (85%)
+  → Terraform Infrastructure as Code (70%)
+  → Azure DevOps & M365 (80%)
 
-    education: `B.Tech Electronics & Communications (2021-2025)
-Sri Venkateswara University, Tirupati
-GPA: 8.72 / 10.0
+FRONTEND TECHNOLOGIES  
+  → React & TypeScript (82%)
+  → Next.js 16+ (82%)
+  → HTML5 / CSS3 / Tailwind (88%)
 
-AIR 18 - AMECET Entrance Exam
-93.6 Percentile - JEE Main
-96.3% - 12th Grade (CBSE)`,
+BACKEND & AUTOMATION
+  → Node.js / Express.js (75%)
+  → Python 3 (78%)
+  → PostgreSQL / MySQL (65%)
+  → Power Automate (80%)
 
-    experience: `Lumen Technologies
-Information Systems Engineer (Current)
+TOOLS & PLATFORMS
+  → Git / GitHub / GitLab
+  → Docker & Kubernetes
+  → Linux Administration`,
 
-ZettaByte Plus
-Full Stack Developer
+    education: `B.TECH ELECTRONICS & COMMUNICATIONS
+  Sri Venkateswara University, Tirupati
+  June 2021 - April 2025
+  GPA: 8.72 / 10.0
 
-Sigmoid 2025
-Technical Team Head (National Symposium)`,
+HIGHER SECONDARY (MPC)
+  Sri Viswasanthi Educational Institutions  
+  Grade: 96.3%
 
-    projects: `Banking Application (React, Node.js, PostgreSQL)
-SVUCE Official Website (Full Stack)
-Portfolio Website (Next.js, Tailwind)
-Python Snake Game`,
+COMPETITIVE EXAMS
+  ✓ AIR 18 - AMECET Entrance Exam
+  ✓ 93.6 Percentile - JEE Main`,
 
-    achievements: `2nd Prize - InWinHack 2024 (AI Chatbot)
-GitHub Pull Shark Badge
-NSS Volunteer
-Basketball Player - ECE Department
-Technical Symposium Organizer`,
+    experience: `INFORMATION SYSTEMS ENGINEER
+  Lumen Technologies, Bengaluru (Current)
+  Building production systems and cloud infrastructure
+
+FULL STACK DEVELOPER
+  ZettaByte Plus
+  Built web applications with React, Node.js, PostgreSQL
+
+TECHNICAL TEAM LEAD
+  Sigmoid 2025 - National Tech Symposium
+  Managed symposium website and infrastructure`,
+
+    projects: `BANKING APPLICATION
+  React + Node.js + PostgreSQL
+  Implemented secure user authentication
+
+SVUCE OFFICIAL WEBSITE
+  Full-stack development (2024-2025)
+  
+PORTFOLIO WEBSITE
+  Next.js + Tailwind CSS + Three.js
+  Interactive F1-themed portfolio
+
+PYTHON SNAKE GAME
+  Classic game implementation`,
+
+    achievements: `2ND PLACE INWINHACK 2024
+  AI Chatbot using advanced NLP
+
+AIR 18 AMECET ENTRANCE EXAM
+  Top rank in All India Entrance Exam
+
+93.6 PERCENTILE JEE MAIN
+  Strong competitive exam performance
+
+GITHUB PULL SHARK BADGE
+  Active open source contributor`,
 
     contact: `Email: gowtham.tharigopula@gmail.com
-GitHub: github.com/tharigopula
-LinkedIn: linkedin.com/in/gowtham-sree-tharigopula
+GitHub: github.com/gowtham2303
+LinkedIn: linkedin.com/in/gowthamsree
 Location: Bengaluru, India`,
   };
 
-  const handleCardHover = (id: string, e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientY - rect.top - rect.height / 2) / 25;
-    const y = -(e.clientX - rect.left - rect.width / 2) / 25;
-    setCardRotations({ ...cardRotations, [id]: { x, y } });
-  };
-
-  const handleCardLeave = (id: string) => {
-    setCardRotations({ ...cardRotations, [id]: { x: 0, y: 0 } });
+  const toggleSection = (id: string) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
   };
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen bg-black overflow-hidden"
+      className="relative w-full min-h-screen bg-black overflow-x-hidden"
       style={{ cursor: 'none' }}
     >
       {/* Animated Grid Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <svg className="w-full h-full opacity-5">
           <defs>
             <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -105,23 +151,23 @@ Location: Bengaluru, India`,
         </svg>
       </div>
 
-      {/* Cursor Following Glow - Large Radial */}
+      {/* Cursor Following Glow */}
       <div
         className="fixed rounded-full pointer-events-none z-10"
         style={{
           left: `${mousePos.x}px`,
           top: `${mousePos.y}px`,
           transform: 'translate(-50%, -50%)',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(232, 0, 45, 0.08) 0%, transparent 70%)',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(232, 0, 45, 0.12) 0%, transparent 70%)',
           filter: 'blur(40px)',
-          transition: 'left 0.15s ease-out, top 0.15s ease-out',
+          transition: 'left 0.1s ease-out, top 0.1s ease-out',
         }}
       />
 
       {/* Header with Glassmorphism */}
-      <header className="relative z-30 backdrop-blur-xl bg-black/30 border-b border-red-500/20 px-6 py-4 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-black/30 border-b border-red-500/20 px-6 py-4 flex items-center justify-between">
         <Link href="/">
           <button className="group flex items-center gap-2 text-red-500 hover:text-red-400 transition-all duration-300">
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
@@ -131,10 +177,10 @@ Location: Bengaluru, India`,
 
         <div className="flex gap-6">
           {[
-            { icon: Github, href: 'https://github.com/tharigopula' },
-            { icon: Linkedin, href: 'https://linkedin.com/in/gowtham-sree-tharigopula' },
+            { icon: Github, href: 'https://github.com/gowtham2303' },
+            { icon: Linkedin, href: 'https://linkedin.com/in/gowthamsree' },
             { icon: Mail, href: 'mailto:gowtham.tharigopula@gmail.com' },
-            { icon: FileText, href: '/resume.txt', download: true },
+            { icon: FileText, href: '/resume.pdf', download: true },
           ].map((link, i) => (
             <a
               key={i}
@@ -150,158 +196,192 @@ Location: Bengaluru, India`,
         </div>
       </header>
 
-      {/* Main Content Grid with Enhanced Spacing */}
-      <div className="relative z-20 h-[calc(100vh-80px)] overflow-y-auto">
-        <div className="p-8 md:p-12 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {/* Main Content with Tabs Expanding Down */}
+      <div className="relative z-20 pt-24 pb-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl font-black text-white mb-12 uppercase tracking-wider">Portfolio Sections</h1>
+
+          <div className="space-y-4">
             {sections.map((section, idx) => (
-              <button
+              <div
                 key={section.id}
-                onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
-                onMouseMove={(e) => handleCardHover(section.id, e)}
-                onMouseLeave={() => handleCardLeave(section.id)}
-                className={`group relative h-56 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 ${
-                  activeSection === section.id
-                    ? 'ring-2 ring-red-500 shadow-2xl shadow-red-500/50 scale-105'
-                    : 'hover:shadow-2xl hover:shadow-red-500/20'
-                }`}
+                className="group transition-all duration-500"
                 style={{
-                  transitionDelay: `${idx * 50}ms`,
-                  transform: cardRotations[section.id]
-                    ? `perspective(1000px) rotateX(${cardRotations[section.id].x}deg) rotateY(${cardRotations[section.id].y}deg)`
-                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                  opacity: 0.8 + (scrollY / 1000) * 0.2,
+                  transform: `translateY(${Math.sin((scrollY + idx * 100) / 200) * 3}px)`,
                 }}
               >
-                {/* Glassmorphism Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent backdrop-blur-md" />
-                
-                {/* Border Gradient */}
-                <div
-                  className="absolute inset-0 rounded-xl"
+                {/* Tab Header Button */}
+                <button
+                  onClick={() => toggleSection(section.id)}
+                  className="w-full relative overflow-hidden rounded-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-red-500/20"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(232, 0, 45, 0.3), rgba(0, 210, 255, 0.1))',
-                    padding: '1px',
-                    pointerEvents: 'none',
+                    background: expandedSections[section.id]
+                      ? `linear-gradient(135deg, rgba(232, 0, 45, 0.2), rgba(0, 210, 255, 0.1))`
+                      : `linear-gradient(135deg, rgba(232, 0, 45, 0.05), rgba(0, 210, 255, 0.02))`,
+                    border: `1px solid ${expandedSections[section.id] ? 'rgba(232, 0, 45, 0.3)' : 'rgba(232, 0, 45, 0.1)'}`,
+                    backdropFilter: 'blur(10px)',
                   }}
                 >
-                  <div className="inset-0 rounded-xl bg-black/60" />
-                </div>
+                  <div className="flex items-center justify-between px-6 py-5">
+                    <div className="flex items-center gap-4">
+                      <div className="text-3xl">{section.icon}</div>
+                      <div className="text-left">
+                        <h3 className="text-white font-black uppercase tracking-wider text-lg">{section.label}</h3>
+                        <p className="text-gray-400 text-xs mt-1">Click to expand</p>
+                      </div>
+                    </div>
 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <ChevronDown
+                      className="w-5 h-5 text-red-500 transition-transform duration-300"
+                      style={{
+                        transform: expandedSections[section.id] ? 'rotate(180deg)' : 'rotate(0deg)',
+                      }}
+                    />
+                  </div>
 
-                {/* Content */}
-                <div className="relative h-full flex flex-col items-center justify-center gap-4 p-6">
+                  {/* Hover Shine */}
                   <div
-                    className="text-5xl md:text-6xl font-black text-white transition-all duration-300 group-hover:scale-110"
+                    className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300"
                     style={{
-                      textShadow: '0 0 40px rgba(232, 0, 45, 0.6), 0 0 80px rgba(232, 0, 45, 0.3)',
-                      letterSpacing: '0.1em',
+                      background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%)',
+                    }}
+                  />
+                </button>
+
+                {/* Content Panel - Expands Down */}
+                {expandedSections[section.id] && (
+                  <div
+                    className="overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-top-2"
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(232, 0, 45, 0.08), rgba(0, 210, 255, 0.05))',
+                      border: '1px solid rgba(232, 0, 45, 0.2)',
+                      borderTop: 'none',
+                      backdropFilter: 'blur(10px)',
                     }}
                   >
-                    {section.label.charAt(0)}
+                    <div className="px-6 py-8 border-t border-red-500/10">
+                      <p className="text-white/80 font-mono text-sm leading-relaxed whitespace-pre-line">
+                        {content[section.id as keyof typeof content]}
+                      </p>
+                    </div>
                   </div>
-                  <span className="font-mono text-xs md:text-sm font-bold text-white/70 uppercase tracking-widest group-hover:text-white transition-colors">
-                    {section.label}
-                  </span>
-                </div>
-
-                {/* Shine Effect */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300"
-                  style={{
-                    background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%)',
-                  }}
-                />
-              </button>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Content Modal with Enhanced Styling */}
-      {activeSection && (
-        <div
-          className="fixed inset-0 z-40 flex items-center justify-center p-4 backdrop-blur-sm"
-          onClick={() => setActiveSection(null)}
-        >
-          <div
-            className="w-full max-w-3xl max-h-[80vh] bg-black/95 rounded-xl p-8 overflow-y-auto backdrop-blur-2xl shadow-2xl transition-all duration-300 animate-in fade-in zoom-in-95"
-            style={{
-              border: '1px solid rgba(232, 0, 45, 0.4)',
-              boxShadow: '0 0 60px rgba(232, 0, 45, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-black text-red-500 uppercase tracking-wider">
-                {sections.find((s) => s.id === activeSection)?.label}
-              </h2>
-              <button
-                onClick={() => setActiveSection(null)}
-                className="text-gray-400 hover:text-red-500 transition-colors p-2 hover:bg-red-500/10 rounded-lg"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+      {/* Custom Scrollbar Styling */}
+      <style>{`
+        ::-webkit-scrollbar {
+          width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.1);
+        }
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(180deg, #E8002D, #00D2FF);
+          border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(180deg, #FF0040, #00E5FF);
+        }
 
-            <div className="border-b border-red-500/20 mb-6" />
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.98);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
 
-            <p className="text-white/80 font-mono text-sm leading-relaxed whitespace-pre-line">
-              {content[activeSection as keyof typeof content]}
-            </p>
-          </div>
-        </div>
-      )}
+        .animate-in {
+          animation: fadeInScale 0.3s ease-out;
+        }
+      `}</style>
 
-      {/* Animated Cars Background */}
+      {/* 3D F1 Racing Animation Background */}
       <svg
-        className="absolute inset-0 z-5 w-full h-full pointer-events-none"
+        className="fixed inset-0 z-5 w-full h-full pointer-events-none opacity-30"
         id="f1-svg"
+        style={{
+          filter: 'blur(1px)',
+        }}
       >
-        {/* Define car shapes */}
         <defs>
-          <g id="f1-car">
-            <rect width="40" height="20" fill="currentColor" x="-20" y="-10" rx="3" />
-            <circle cx="-8" cy="8" r="4" fill="#333" />
-            <circle cx="8" cy="8" r="4" fill="#333" />
-          </g>
+          <linearGradient id="carGradient1" x1="0%" y1="0%" x2="100%">
+            <stop offset="0%" stopColor="#E8002D" />
+            <stop offset="100%" stopColor="#FF6B5B" />
+          </linearGradient>
+          <linearGradient id="carGradient2" x1="0%" y1="0%" x2="100%">
+            <stop offset="0%" stopColor="#FFD700" />
+            <stop offset="100%" stopColor="#FFED4E" />
+          </linearGradient>
+          <linearGradient id="carGradient3" x1="0%" y1="0%" x2="100%">
+            <stop offset="0%" stopColor="#00D2FF" />
+            <stop offset="100%" stopColor="#00FFFF" />
+          </linearGradient>
         </defs>
       </svg>
 
-      {/* Canvas for animated racing elements */}
+      {/* Racing Animation Script */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
             (function() {
               const svg = document.getElementById('f1-svg');
               if (!svg) return;
-              
+
               const cars = [
-                { x: 100, y: 200, angle: 0, speed: 2, color: '#E8002D' },
-                { x: 400, y: 400, angle: 2, speed: 1.5, color: '#FFD700' },
-                { x: 700, y: 100, angle: 3.14, speed: 2.5, color: '#00D2FF' },
+                { x: 100, y: 200, angle: 0, speed: 1.5, gradient: 'carGradient1', size: 35 },
+                { x: 400, y: 400, angle: 2, speed: 1.2, gradient: 'carGradient2', size: 30 },
+                { x: 700, y: 100, angle: 3.14, speed: 2, gradient: 'carGradient3', size: 32 },
               ];
-              
+
+              function drawCar(car) {
+                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                g.setAttribute('transform', 'translate(' + car.x + ',' + car.y + ') rotate(' + (car.angle * 180 / Math.PI) + ')');
+
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', -car.size / 2);
+                rect.setAttribute('y', -car.size / 3);
+                rect.setAttribute('width', car.size);
+                rect.setAttribute('height', car.size / 1.5);
+                rect.setAttribute('rx', '3');
+                rect.setAttribute('fill', 'url(#' + car.gradient + ')');
+                rect.setAttribute('opacity', '0.7');
+
+                g.appendChild(rect);
+                svg.appendChild(g);
+
+                setTimeout(() => g.remove(), 100);
+              }
+
               function animate() {
-                cars.forEach((car, idx) => {
+                cars.forEach(car => {
                   car.x += Math.cos(car.angle) * car.speed;
                   car.y += Math.sin(car.angle) * car.speed;
-                  
+
                   if (car.x < -50) car.x = window.innerWidth + 50;
                   if (car.x > window.innerWidth + 50) car.x = -50;
                   if (car.y < -50) car.y = window.innerHeight + 50;
                   if (car.y > window.innerHeight + 50) car.y = -50;
-                  
-                  // Change angle occasionally for more dynamic movement
+
                   if (Math.random() < 0.02) {
-                    car.angle += (Math.random() - 0.5) * 0.5;
+                    car.angle += (Math.random() - 0.5) * 0.3;
                   }
+
+                  drawCar(car);
                 });
-                
+
                 requestAnimationFrame(animate);
               }
-              
+
               animate();
             })();
           `,
